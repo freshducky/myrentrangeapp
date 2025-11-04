@@ -2,16 +2,24 @@ import 'package:flutter/material.dart';
 import '../widgets/salary_input.dart';
 import '../widgets/state_selector.dart';
 import '../widgets/city_selector.dart';
+import '../widgets/neighborhood_selector.dart';
 import '../widgets/option_toggles.dart';
 import '../widgets/rent_range_output.dart';
 import '../../core/calculations/rent_calculator.dart';
 import '../../data/models/calculation_result.dart';
+import '../../data/models/bedroom_config.dart';
+import '../../data/sources/neighborhoods_data.dart';
+import '../../core/services/calculation_history.dart';
+import '../widgets/bedroom_selector.dart';
+import '../widgets/ad_banner.dart';
 import '../theme/app_theme.dart';
 
 /// Main home screen - calculator interface
 /// Ported from src/pages/index.tsx
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final Function(ThemeMode, bool)? onThemeChanged;
+
+  const HomeScreen({super.key, this.onThemeChanged});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -23,6 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
   IncomeType _salaryType = IncomeType.annual;
   String? _selectedState;
   String? _selectedCity;
+  String? _selectedNeighborhood;
+  BedroomConfiguration _selectedBedroom = BedroomConfiguration.oneBedroom;
   bool _ownsCar = false;
   bool _livingAlone = false;
 
@@ -43,42 +53,75 @@ class _HomeScreenState extends State<HomeScreen> {
       return;
     }
 
+    // Pass neighborhood if city has neighborhood support
+    String? neighborhoodName;
+    if (_selectedCity != null && 
+        _selectedNeighborhood != null &&
+        NeighborhoodsDataSource.hasNeighborhoods(_selectedState!, _selectedCity!)) {
+      neighborhoodName = _selectedNeighborhood;
+    }
+
     final result = RentCalculator.calculate(
       grossIncome: _salary,
       incomeType: _salaryType,
       stateAbbr: _selectedState!,
       ownsCar: _ownsCar,
       hasRoommates: !_livingAlone,
+      bedroom: _selectedBedroom,
+      cityName: _selectedCity,
+      neighborhoodName: neighborhoodName,
     );
 
     setState(() {
       _result = result;
     });
+
+    // Save to history
+    CalculationHistory.saveCalculation(result);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
+        title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
+            const Text(
               'My',
               style: TextStyle(color: AppTheme.accentRed),
             ),
             Text(
               'RentRange',
-              style: TextStyle(color: AppTheme.primaryBlue),
+              style: TextStyle(color: Theme.of(context).colorScheme.primary),
             ),
           ],
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.history),
+            onPressed: () {
+              Navigator.pushNamed(context, '/history');
+            },
+            tooltip: 'Calculation History',
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.pushNamed(context, '/settings');
+            },
+            tooltip: 'Settings',
+          ),
+        ],
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
             // Header
             Text(
               'What is MyRentRange?',
@@ -102,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       'Where You Live',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: AppTheme.primaryBlue,
+                            color: Theme.of(context).colorScheme.primary,
                             fontWeight: FontWeight.w600,
                           ),
                     ),
@@ -113,6 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         setState(() {
                           _selectedState = value;
                           _selectedCity = null; // Reset city when state changes
+                          _selectedNeighborhood = null; // Reset neighborhood when state changes
                         });
                         _calculate();
                       },
@@ -125,9 +169,42 @@ class _HomeScreenState extends State<HomeScreen> {
                         onCitySelected: (city) {
                           setState(() {
                             _selectedCity = city;
+                            // Reset neighborhood when city changes away from DC
+                            if (_selectedState != 'DC' || city != 'Washington') {
+                              _selectedNeighborhood = null;
+                            }
                           });
+                          _calculate();
                         },
                       ),
+                    // Show neighborhood selector if city has neighborhoods
+                    if (_selectedState != null && 
+                        _selectedCity != null &&
+                        NeighborhoodsDataSource.hasNeighborhoods(_selectedState!, _selectedCity!)) ...[
+                      const SizedBox(height: 16),
+                      NeighborhoodSelector(
+                        stateAbbr: _selectedState,
+                        cityName: _selectedCity,
+                        selectedNeighborhood: _selectedNeighborhood,
+                        onNeighborhoodSelected: (neighborhood) {
+                          setState(() {
+                            _selectedNeighborhood = neighborhood;
+                          });
+                          _calculate();
+                        },
+                      ),
+                    ],
+                    // Bedroom selector
+                    const SizedBox(height: 16),
+                    BedroomSelector(
+                      selectedBedroom: _selectedBedroom,
+                      onBedroomSelected: (bedroom) {
+                        setState(() {
+                          _selectedBedroom = bedroom;
+                        });
+                        _calculate();
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -145,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       'Gross Salary',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: AppTheme.primaryBlue,
+                            color: Theme.of(context).colorScheme.primary,
                             fontWeight: FontWeight.w600,
                           ),
                     ),
@@ -183,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       'Options',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: AppTheme.primaryBlue,
+                            color: Theme.of(context).colorScheme.primary,
                             fontWeight: FontWeight.w600,
                           ),
                     ),
@@ -211,14 +288,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
             const SizedBox(height: 24),
 
-            // Rent range output
-            if (_result != null)
-              RentRangeOutput(
-                rentRange: _result!.affordableRent,
-                hasRoommates: !_livingAlone,
+                // Rent range output
+                if (_result != null)
+                  RentRangeOutput(
+                    rentRange: _result!.affordableRent,
+                    netMonthlyIncome: _result!.netMonthlyIncome,
+                    grossIncome: _salary,
+                    incomeType: _salaryType,
+                    stateAbbr: _selectedState!,
+                    hasRoommates: !_livingAlone,
+                    bedroom: _result!.selectedBedroom,
+                    neighborhoodName: _result!.selectedNeighborhood,
+                    neighborhoodAverageRent: _result!.neighborhoodAverageRent,
+                  ),
+                ],
               ),
-          ],
-        ),
+            ),
+          ),
+          // Banner ad at bottom (iOS only, hides when removed)
+          const AdBanner(),
+        ],
       ),
     );
   }

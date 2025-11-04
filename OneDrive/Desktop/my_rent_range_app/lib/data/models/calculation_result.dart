@@ -1,3 +1,5 @@
+import 'bedroom_config.dart';
+
 /// Result of a rent calculation
 class CalculationResult {
   final double netMonthlyIncome;
@@ -5,6 +7,9 @@ class CalculationResult {
   final RentBurdenLevel burdenLevel;
   final double burdenPercentage;
   final String insights;
+  final BedroomConfiguration selectedBedroom;
+  final String? selectedNeighborhood;
+  final double? neighborhoodAverageRent;
 
   CalculationResult({
     required this.netMonthlyIncome,
@@ -12,6 +17,9 @@ class CalculationResult {
     required this.burdenLevel,
     required this.burdenPercentage,
     required this.insights,
+    required this.selectedBedroom,
+    this.selectedNeighborhood,
+    this.neighborhoodAverageRent,
   });
 }
 

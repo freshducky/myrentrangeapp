@@ -1,0 +1,587 @@
+{
+  "New York City": {
+    "region_name": "New York, NY",
+    "state": "NY",
+    "home_value": 708661.9718183964,
+    "rent_estimate": 3898.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "New York City"
+  },
+  "Los Angeles": {
+    "region_name": "Los Angeles, CA",
+    "state": "CA",
+    "home_value": 945078.9854082497,
+    "rent_estimate": 5198.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Los Angeles"
+  },
+  "Chicago": {
+    "region_name": "Chicago, IL",
+    "state": "IL",
+    "home_value": 339492.87370131636,
+    "rent_estimate": 1867.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Chicago"
+  },
+  "Dallas": {
+    "region_name": "Dallas, TX",
+    "state": "TX",
+    "home_value": 364244.3469202228,
+    "rent_estimate": 2003.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Dallas"
+  },
+  "Houston": {
+    "region_name": "Houston, TX",
+    "state": "TX",
+    "home_value": 306975.68601026456,
+    "rent_estimate": 1688.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Houston"
+  },
+  "Phoenix": {
+    "region_name": "Phoenix, AZ",
+    "state": "AZ",
+    "home_value": 448201.3704283154,
+    "rent_estimate": 2465.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Phoenix"
+  },
+  "Philadelphia": {
+    "region_name": "Philadelphia, PA",
+    "state": "PA",
+    "home_value": 379304.6780450268,
+    "rent_estimate": 2086.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Philadelphia"
+  },
+  "San Antonio": {
+    "region_name": "San Antonio, TX",
+    "state": "TX",
+    "home_value": 279262.51567261404,
+    "rent_estimate": 1536.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "San Antonio"
+  },
+  "San Diego": {
+    "region_name": "San Diego, CA",
+    "state": "CA",
+    "home_value": 919122.499522639,
+    "rent_estimate": 5055.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "San Diego"
+  },
+  "San Jose": {
+    "region_name": "San Jose, CA",
+    "state": "CA",
+    "home_value": 1545558.173259984,
+    "rent_estimate": 8501.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "San Jose"
+  },
+  "Austin": {
+    "region_name": "Austin, TX",
+    "state": "TX",
+    "home_value": 430002.09889158537,
+    "rent_estimate": 2365.0,
+    "trend": "down",
+    "last_updated": "2025-09-30",
+    "city_name": "Austin"
+  },
+  "Jacksonville": {
+    "region_name": "Jacksonville, FL",
+    "state": "FL",
+    "home_value": 351350.00189339457,
+    "rent_estimate": 1932.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Jacksonville"
+  },
+  "Columbus": {
+    "region_name": "Columbus, OH",
+    "state": "OH",
+    "home_value": 322482.97346845444,
+    "rent_estimate": 1774.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Columbus"
+  },
+  "Charlotte": {
+    "region_name": "Charlotte, NC",
+    "state": "NC",
+    "home_value": 385125.6072631338,
+    "rent_estimate": 2118.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Charlotte"
+  },
+  "San Francisco": {
+    "region_name": "San Francisco, CA",
+    "state": "CA",
+    "home_value": 1103231.2234842237,
+    "rent_estimate": 6068.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "San Francisco"
+  },
+  "Indianapolis": {
+    "region_name": "Indianapolis, IN",
+    "state": "IN",
+    "home_value": 287728.810656161,
+    "rent_estimate": 1583.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Indianapolis"
+  },
+  "Seattle": {
+    "region_name": "Seattle, WA",
+    "state": "WA",
+    "home_value": 739397.5676763118,
+    "rent_estimate": 4067.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Seattle"
+  },
+  "Denver": {
+    "region_name": "Denver, CO",
+    "state": "CO",
+    "home_value": 570351.751935007,
+    "rent_estimate": 3137.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Denver"
+  },
+  "Washington": {
+    "region_name": "Washington, DC",
+    "state": "VA",
+    "home_value": 575143.5743347836,
+    "rent_estimate": 3163.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Washington"
+  },
+  "Boston": {
+    "region_name": "Boston, MA",
+    "state": "MA",
+    "home_value": 720030.225243321,
+    "rent_estimate": 3960.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Boston"
+  },
+  "El Paso": {
+    "region_name": "El Paso, TX",
+    "state": "TX",
+    "home_value": 224591.6604135025,
+    "rent_estimate": 1235.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "El Paso"
+  },
+  "Detroit": {
+    "region_name": "Detroit, MI",
+    "state": "MI",
+    "home_value": 261292.5892039203,
+    "rent_estimate": 1437.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Detroit"
+  },
+  "Nashville": {
+    "region_name": "Nashville, TN",
+    "state": "TN",
+    "home_value": 451598.9068094305,
+    "rent_estimate": 2484.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Nashville"
+  },
+  "Portland": {
+    "region_name": "Portland, OR",
+    "state": "OR",
+    "home_value": 544870.097724687,
+    "rent_estimate": 2997.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Portland"
+  },
+  "Oklahoma City": {
+    "region_name": "Oklahoma City, OK",
+    "state": "OK",
+    "home_value": 240525.03003786414,
+    "rent_estimate": 1323.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Oklahoma City"
+  },
+  "Las Vegas": {
+    "region_name": "Las Vegas, NV",
+    "state": "NV",
+    "home_value": 433034.0823498456,
+    "rent_estimate": 2382.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Las Vegas"
+  },
+  "Louisville": {
+    "region_name": "Louisville, KY",
+    "state": "KY",
+    "home_value": 270474.5778104371,
+    "rent_estimate": 1488.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Louisville"
+  },
+  "Baltimore": {
+    "region_name": "Baltimore, MD",
+    "state": "MD",
+    "home_value": 396636.3466660232,
+    "rent_estimate": 2181.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Baltimore"
+  },
+  "Milwaukee": {
+    "region_name": "Milwaukee, WI",
+    "state": "WI",
+    "home_value": 370039.1341661876,
+    "rent_estimate": 2035.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Milwaukee"
+  },
+  "Albuquerque": {
+    "region_name": "Albuquerque, NM",
+    "state": "NM",
+    "home_value": 343077.193792744,
+    "rent_estimate": 1887.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Albuquerque"
+  },
+  "Tucson": {
+    "region_name": "Tucson, AZ",
+    "state": "AZ",
+    "home_value": 343809.70490569505,
+    "rent_estimate": 1891.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Tucson"
+  },
+  "Fresno": {
+    "region_name": "Fresno, CA",
+    "state": "CA",
+    "home_value": 404411.61450359813,
+    "rent_estimate": 2224.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Fresno"
+  },
+  "Sacramento": {
+    "region_name": "Sacramento, CA",
+    "state": "CA",
+    "home_value": 576213.7597293617,
+    "rent_estimate": 3169.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Sacramento"
+  },
+  "Atlanta": {
+    "region_name": "Atlanta, GA",
+    "state": "GA",
+    "home_value": 381811.5520807199,
+    "rent_estimate": 2100.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Atlanta"
+  },
+  "Omaha": {
+    "region_name": "Omaha, NE",
+    "state": "NE",
+    "home_value": 297695.26862661965,
+    "rent_estimate": 1637.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Omaha"
+  },
+  "Colorado Springs": {
+    "region_name": "Colorado Springs, CO",
+    "state": "CO",
+    "home_value": 454807.3775872415,
+    "rent_estimate": 2501.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Colorado Springs"
+  },
+  "Raleigh": {
+    "region_name": "Raleigh, NC",
+    "state": "NC",
+    "home_value": 440345.9732997862,
+    "rent_estimate": 2422.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Raleigh"
+  },
+  "Virginia Beach": {
+    "region_name": "Virginia Beach, VA",
+    "state": "VA",
+    "home_value": 359730.4443291972,
+    "rent_estimate": 1979.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Virginia Beach"
+  },
+  "Miami": {
+    "region_name": "Miami, FL",
+    "state": "FL",
+    "home_value": 474443.5071443785,
+    "rent_estimate": 2609.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Miami"
+  },
+  "Minneapolis": {
+    "region_name": "Minneapolis, MN",
+    "state": "MN",
+    "home_value": 381004.6006197594,
+    "rent_estimate": 2096.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Minneapolis"
+  },
+  "Cleveland": {
+    "region_name": "Cleveland, OH",
+    "state": "OH",
+    "home_value": 241901.12980928167,
+    "rent_estimate": 1330.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Cleveland"
+  },
+  "Wichita": {
+    "region_name": "Wichita, KS",
+    "state": "KS",
+    "home_value": 215454.22770265164,
+    "rent_estimate": 1185.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Wichita"
+  },
+  "Tampa": {
+    "region_name": "Tampa, FL",
+    "state": "FL",
+    "home_value": 361085.49504122534,
+    "rent_estimate": 1986.0,
+    "trend": "down",
+    "last_updated": "2025-09-30",
+    "city_name": "Tampa"
+  },
+  "New Orleans": {
+    "region_name": "New Orleans, LA",
+    "state": "LA",
+    "home_value": 254252.71699891347,
+    "rent_estimate": 1398.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "New Orleans"
+  },
+  "St. Louis": {
+    "region_name": "St. Louis, MO",
+    "state": "MO",
+    "home_value": 265629.8053451139,
+    "rent_estimate": 1461.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "St. Louis"
+  },
+  "Corpus Christi": {
+    "region_name": "Corpus Christi, TX",
+    "state": "TX",
+    "home_value": 218010.76712376147,
+    "rent_estimate": 1199.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Corpus Christi"
+  },
+  "Pittsburgh": {
+    "region_name": "Pittsburgh, PA",
+    "state": "PA",
+    "home_value": 225006.4063644767,
+    "rent_estimate": 1238.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Pittsburgh"
+  },
+  "Anchorage": {
+    "region_name": "Anchorage, AK",
+    "state": "AK",
+    "home_value": 401010.7420315833,
+    "rent_estimate": 2206.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Anchorage"
+  },
+  "Cincinnati": {
+    "region_name": "Cincinnati, OH",
+    "state": "OH",
+    "home_value": 298714.06547228445,
+    "rent_estimate": 1643.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Cincinnati"
+  },
+  "Buffalo": {
+    "region_name": "Buffalo, NY",
+    "state": "NY",
+    "home_value": 277404.4639714226,
+    "rent_estimate": 1526.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Buffalo"
+  },
+  "Albany": {
+    "region_name": "Albany, NY",
+    "state": "NY",
+    "home_value": 356044.3884411422,
+    "rent_estimate": 1958.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Albany"
+  },
+  "Reno": {
+    "region_name": "Reno, NV",
+    "state": "NV",
+    "home_value": 556538.9182393675,
+    "rent_estimate": 3061.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Reno"
+  },
+  "Orlando": {
+    "region_name": "Orlando, FL",
+    "state": "FL",
+    "home_value": 388933.9229574465,
+    "rent_estimate": 2139.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Orlando"
+  },
+  "Madison": {
+    "region_name": "Madison, WI",
+    "state": "WI",
+    "home_value": 434619.5873301508,
+    "rent_estimate": 2390.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Madison"
+  },
+  "Richmond": {
+    "region_name": "Richmond, VA",
+    "state": "VA",
+    "home_value": 381144.555177873,
+    "rent_estimate": 2096.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Richmond"
+  },
+  "Birmingham": {
+    "region_name": "Birmingham, AL",
+    "state": "AL",
+    "home_value": 254682.0143845179,
+    "rent_estimate": 1401.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Birmingham"
+  },
+  "Spokane": {
+    "region_name": "Spokane, WA",
+    "state": "WA",
+    "home_value": 416404.7212037355,
+    "rent_estimate": 2290.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Spokane"
+  },
+  "Des Moines": {
+    "region_name": "Des Moines, IA",
+    "state": "IA",
+    "home_value": 291330.02560132224,
+    "rent_estimate": 1602.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Des Moines"
+  },
+  "Little Rock": {
+    "region_name": "Little Rock, AR",
+    "state": "AR",
+    "home_value": 224040.48383046032,
+    "rent_estimate": 1232.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Little Rock"
+  },
+  "Salt Lake City": {
+    "region_name": "Salt Lake City, UT",
+    "state": "UT",
+    "home_value": 553899.913051855,
+    "rent_estimate": 3046.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Salt Lake City"
+  },
+  "Providence": {
+    "region_name": "Providence, RI",
+    "state": "RI",
+    "home_value": 503894.6078384863,
+    "rent_estimate": 2771.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Providence"
+  },
+  "Sioux Falls": {
+    "region_name": "Sioux Falls, SD",
+    "state": "SD",
+    "home_value": 335510.73231275025,
+    "rent_estimate": 1845.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Sioux Falls"
+  },
+  "Fargo": {
+    "region_name": "Fargo, ND",
+    "state": "ND",
+    "home_value": 321160.11782116996,
+    "rent_estimate": 1766.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Fargo"
+  },
+  "Provo": {
+    "region_name": "Provo, UT",
+    "state": "UT",
+    "home_value": 534613.7617634917,
+    "rent_estimate": 2940.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Provo"
+  },
+  "Billings": {
+    "region_name": "Billings, MT",
+    "state": "MT",
+    "home_value": 400669.17416930315,
+    "rent_estimate": 2204.0,
+    "trend": "stable",
+    "last_updated": "2025-09-30",
+    "city_name": "Billings"
+  }
+}

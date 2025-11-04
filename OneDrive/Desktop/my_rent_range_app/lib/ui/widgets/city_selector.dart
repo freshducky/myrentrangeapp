@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../data/models/city_data.dart';
-import '../../data/sources/city_data.dart';
+import '../../data/sources/city_data_enricher.dart';
 
 /// City selector dropdown
 /// Ported from CitySelector component
@@ -22,7 +22,7 @@ class CitySelector extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    final allCities = CityDataSource.getAllCities();
+    final allCities = CityDataEnricher.getAllCitiesEnriched();
     final citiesInState = CityData.getCitiesByState(stateAbbr!, allCities);
 
     if (citiesInState.isEmpty) {
@@ -42,9 +42,27 @@ class CitySelector extends StatelessWidget {
         hintText: 'Choose a city...',
       ),
       items: citiesInState.map((city) {
+        // Show trend indicator if available
+        String displayText = city.name;
+        if (city.rentTrend != null) {
+          String trendIcon = '';
+          switch (city.rentTrend!) {
+            case RentTrend.up:
+              trendIcon = ' ↑';
+              break;
+            case RentTrend.down:
+              trendIcon = ' ↓';
+              break;
+            case RentTrend.stable:
+              trendIcon = ' →';
+              break;
+          }
+          displayText = '${city.name}$trendIcon';
+        }
+        
         return DropdownMenuItem<String>(
           value: city.name,
-          child: Text(city.name),
+          child: Text(displayText),
         );
       }).toList(),
       onChanged: onCitySelected,

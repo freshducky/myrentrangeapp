@@ -1,3 +1,10 @@
+/// Rent trend indicator
+enum RentTrend {
+  up,
+  stable,
+  down,
+}
+
 /// City-level economic data
 class CityData {
   final String id;
@@ -7,6 +14,9 @@ class CityData {
   final double medianRent;
   final double medianIncome;
   final bool isSpecialCase;
+  final String? dataSource; // "Zillow", "Estimated", etc.
+  final DateTime? lastUpdated;
+  final RentTrend? rentTrend; // Trend indicator from Zillow data
 
   CityData({
     required this.id,
@@ -16,6 +26,9 @@ class CityData {
     required this.medianRent,
     required this.medianIncome,
     this.isSpecialCase = false,
+    this.dataSource,
+    this.lastUpdated,
+    this.rentTrend,
   });
 
   /// Get city by full name (e.g., "Washington, DC")

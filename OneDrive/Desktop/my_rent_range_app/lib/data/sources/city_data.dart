@@ -46,6 +46,7 @@ class CityDataSource {
       CityData(id: 'phoenix-az', name: 'Phoenix', state: 'AZ', fullName: 'Phoenix, AZ', medianRent: 1350, medianIncome: 52000),
       CityData(id: 'tucson-az', name: 'Tucson', state: 'AZ', fullName: 'Tucson, AZ', medianRent: 1150, medianIncome: 48000),
       CityData(id: 'mesa-az', name: 'Mesa', state: 'AZ', fullName: 'Mesa, AZ', medianRent: 1250, medianIncome: 50000),
+      CityData(id: 'scottsdale-az', name: 'Scottsdale', state: 'AZ', fullName: 'Scottsdale, AZ', medianRent: 2200, medianIncome: 65000),
       
       // Arkansas
       CityData(id: 'little-rock-ar', name: 'Little Rock', state: 'AR', fullName: 'Little Rock, AR', medianRent: 850, medianIncome: 45000),
@@ -53,6 +54,7 @@ class CityDataSource {
       
       // California
       CityData(id: 'los-angeles-ca', name: 'Los Angeles', state: 'CA', fullName: 'Los Angeles, CA', medianRent: 2450, medianIncome: 52000),
+      CityData(id: 'anaheim-ca', name: 'Anaheim', state: 'CA', fullName: 'Anaheim, CA', medianRent: 2200, medianIncome: 60000),
       CityData(id: 'san-francisco-ca', name: 'San Francisco', state: 'CA', fullName: 'San Francisco, CA', medianRent: 3100, medianIncome: 70000),
       CityData(id: 'san-diego-ca', name: 'San Diego', state: 'CA', fullName: 'San Diego, CA', medianRent: 2450, medianIncome: 52000),
       CityData(id: 'san-jose-ca', name: 'San Jose', state: 'CA', fullName: 'San Jose, CA', medianRent: 2450, medianIncome: 52000),
@@ -74,6 +76,9 @@ class CityDataSource {
       
       // Florida
       CityData(id: 'miami-fl', name: 'Miami', state: 'FL', fullName: 'Miami, FL', medianRent: 1450, medianIncome: 48000),
+      CityData(id: 'tampa-fl', name: 'Tampa', state: 'FL', fullName: 'Tampa, FL', medianRent: 1350, medianIncome: 52000),
+      CityData(id: 'orlando-fl', name: 'Orlando', state: 'FL', fullName: 'Orlando, FL', medianRent: 1350, medianIncome: 50000),
+      CityData(id: 'jacksonville-fl', name: 'Jacksonville', state: 'FL', fullName: 'Jacksonville, FL', medianRent: 1200, medianIncome: 48000),
       
       // Georgia
       CityData(id: 'atlanta-ga', name: 'Atlanta', state: 'GA', fullName: 'Atlanta, GA', medianRent: 1240, medianIncome: 56000),
@@ -116,6 +121,7 @@ class CityDataSource {
       
       // Minnesota
       CityData(id: 'minneapolis-mn', name: 'Minneapolis', state: 'MN', fullName: 'Minneapolis, MN', medianRent: 1250, medianIncome: 58000),
+      CityData(id: 'st-paul-mn', name: 'St. Paul', state: 'MN', fullName: 'St. Paul, MN', medianRent: 1150, medianIncome: 55000),
       
       // Mississippi
       CityData(id: 'jackson-ms', name: 'Jackson', state: 'MS', fullName: 'Jackson, MS', medianRent: 850, medianIncome: 42000),
@@ -131,6 +137,7 @@ class CityDataSource {
       
       // Nevada
       CityData(id: 'las-vegas-nv', name: 'Las Vegas', state: 'NV', fullName: 'Las Vegas, NV', medianRent: 1350, medianIncome: 52000),
+      CityData(id: 'reno-nv', name: 'Reno', state: 'NV', fullName: 'Reno, NV', medianRent: 3061, medianIncome: 58000),
       
       // New Hampshire
       CityData(id: 'manchester-nh', name: 'Manchester', state: 'NH', fullName: 'Manchester, NH', medianRent: 1250, medianIncome: 55000),
@@ -143,15 +150,20 @@ class CityDataSource {
       
       // New York
       CityData(id: 'new-york-ny', name: 'New York City', state: 'NY', fullName: 'New York City, NY', medianRent: 3200, medianIncome: 60000),
+      CityData(id: 'buffalo-ny', name: 'Buffalo', state: 'NY', fullName: 'Buffalo, NY', medianRent: 1526, medianIncome: 48000),
+      CityData(id: 'albany-ny', name: 'Albany', state: 'NY', fullName: 'Albany, NY', medianRent: 1958, medianIncome: 55000),
       
       // North Carolina
       CityData(id: 'charlotte-nc', name: 'Charlotte', state: 'NC', fullName: 'Charlotte, NC', medianRent: 1150, medianIncome: 52000),
+      CityData(id: 'raleigh-nc', name: 'Raleigh', state: 'NC', fullName: 'Raleigh, NC', medianRent: 1300, medianIncome: 58000),
       
       // North Dakota
       CityData(id: 'fargo-nd', name: 'Fargo', state: 'ND', fullName: 'Fargo, ND', medianRent: 850, medianIncome: 52000),
       
       // Ohio
       CityData(id: 'cleveland-oh', name: 'Cleveland', state: 'OH', fullName: 'Cleveland, OH', medianRent: 950, medianIncome: 48000),
+      CityData(id: 'columbus-oh', name: 'Columbus', state: 'OH', fullName: 'Columbus, OH', medianRent: 1150, medianIncome: 52000),
+      CityData(id: 'cincinnati-oh', name: 'Cincinnati', state: 'OH', fullName: 'Cincinnati, OH', medianRent: 1050, medianIncome: 50000),
       
       // Oklahoma
       CityData(id: 'oklahoma-city-ok', name: 'Oklahoma City', state: 'OK', fullName: 'Oklahoma City, OK', medianRent: 850, medianIncome: 45000),
@@ -161,6 +173,7 @@ class CityDataSource {
       
       // Pennsylvania
       CityData(id: 'philadelphia-pa', name: 'Philadelphia', state: 'PA', fullName: 'Philadelphia, PA', medianRent: 1150, medianIncome: 52000),
+      CityData(id: 'pittsburgh-pa', name: 'Pittsburgh', state: 'PA', fullName: 'Pittsburgh, PA', medianRent: 1050, medianIncome: 52000),
       
       // Rhode Island
       CityData(id: 'providence-ri', name: 'Providence', state: 'RI', fullName: 'Providence, RI', medianRent: 1250, medianIncome: 55000),
@@ -198,6 +211,7 @@ class CityDataSource {
       
       // Washington
       CityData(id: 'seattle-wa', name: 'Seattle', state: 'WA', fullName: 'Seattle, WA', medianRent: 1450, medianIncome: 62000),
+      CityData(id: 'tacoma-wa', name: 'Tacoma', state: 'WA', fullName: 'Tacoma, WA', medianRent: 1350, medianIncome: 58000),
       CityData(id: 'spokane-wa', name: 'Spokane', state: 'WA', fullName: 'Spokane, WA', medianRent: 1150, medianIncome: 52000),
       CityData(id: 'vancouver-wa', name: 'Vancouver', state: 'WA', fullName: 'Vancouver, WA', medianRent: 1250, medianIncome: 55000),
       

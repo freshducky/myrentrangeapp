@@ -1,5 +1,7 @@
 import '../../data/models/calculation_result.dart';
+import '../../data/models/bedroom_config.dart';
 import '../../data/sources/tax_rates.dart';
+import '../../data/sources/neighborhoods_data.dart';
 
 /// Income type enumeration
 enum IncomeType {
@@ -54,26 +56,45 @@ class RentCalculator {
   }
 
   /// Calculate rent ranges based on net income and living situation
-  /// Ported from RentRangeOutput component logic
+  /// Applies bedroom multiplier to adjust for unit size
   static RentRange calculateRentRanges({
     required double netMonthly,
     required bool hasRoommates,
+    BedroomConfiguration bedroom = BedroomConfiguration.oneBedroom,
   }) {
+    final baseMultiplier = bedroom.multiplier;
+    
+    RentRange baseRange;
     if (hasRoommates) {
       // Living with roommates: 20%, 30%, 40%
-      return RentRange(
+      baseRange = RentRange(
         conservative: netMonthly * 0.20,
         balanced: netMonthly * 0.30,
         stretch: netMonthly * 0.40,
       );
     } else {
       // Living alone: 20%, 25%, 30%
-      return RentRange(
+      baseRange = RentRange(
         conservative: netMonthly * 0.20,
         balanced: netMonthly * 0.25,
         stretch: netMonthly * 0.30,
       );
     }
+    
+    // Apply bedroom multiplier
+    return RentRange(
+      conservative: baseRange.conservative * baseMultiplier,
+      balanced: baseRange.balanced * baseMultiplier,
+      stretch: baseRange.stretch * baseMultiplier,
+    );
+  }
+  
+  /// Apply bedroom multiplier to a rent value
+  static double applyBedroomMultiplier(
+    double rent,
+    BedroomConfiguration bedroom,
+  ) {
+    return rent * bedroom.multiplier;
   }
 
   /// Calculate rent burden level and percentage
@@ -115,7 +136,10 @@ class RentCalculator {
     required String stateAbbr,
     required bool ownsCar,
     required bool hasRoommates,
+    BedroomConfiguration bedroom = BedroomConfiguration.oneBedroom,
     double? actualRent, // Optional: for rent burden calculation
+    String? cityName, // Optional: city name for neighborhood lookup
+    String? neighborhoodName, // Optional: neighborhood name for context
   }) {
     // Step 1: Convert to monthly gross
     final monthlyGross = calculateMonthlyIncome(grossIncome, incomeType);
@@ -127,16 +151,35 @@ class RentCalculator {
       ownsCar: ownsCar,
     );
 
-    // Step 3: Calculate rent ranges
+    // Step 3: Calculate rent ranges (with bedroom multiplier)
     final rentRange = calculateRentRanges(
       netMonthly: netMonthly,
       hasRoommates: hasRoommates,
+      bedroom: bedroom,
     );
 
     // Step 4: Calculate rent burden if actual rent provided
     RentBurdenLevel burdenLevel = RentBurdenLevel.safe;
     double burdenPercentage = 0.0;
     String insights = '';
+
+    // Step 5: Get neighborhood data if provided
+    String? selectedNeighborhood;
+    double? neighborhoodAverageRent;
+    if (neighborhoodName != null && 
+        neighborhoodName.isNotEmpty && 
+        cityName != null && 
+        cityName.isNotEmpty) {
+      final neighborhood = NeighborhoodsDataSource.getNeighborhoodByName(
+        stateAbbr,
+        cityName,
+        neighborhoodName,
+      );
+      if (neighborhood != null) {
+        selectedNeighborhood = neighborhood.name;
+        neighborhoodAverageRent = neighborhood.averageRent;
+      }
+    }
 
     if (actualRent != null && actualRent > 0) {
       burdenLevel = calculateRentBurden(
@@ -154,12 +197,18 @@ class RentCalculator {
         burdenPercentage: burdenPercentage,
         rentRange: rentRange,
         actualRent: actualRent,
+        bedroom: bedroom,
+        neighborhoodName: selectedNeighborhood,
+        neighborhoodAverageRent: neighborhoodAverageRent,
       );
     } else {
       insights = _generateDefaultInsights(
         netMonthly: netMonthly,
         rentRange: rentRange,
         hasRoommates: hasRoommates,
+        bedroom: bedroom,
+        neighborhoodName: selectedNeighborhood,
+        neighborhoodAverageRent: neighborhoodAverageRent,
       );
     }
 
@@ -169,6 +218,9 @@ class RentCalculator {
       burdenLevel: burdenLevel,
       burdenPercentage: burdenPercentage,
       insights: insights,
+      selectedBedroom: bedroom,
+      selectedNeighborhood: selectedNeighborhood,
+      neighborhoodAverageRent: neighborhoodAverageRent,
     );
   }
 
@@ -177,6 +229,9 @@ class RentCalculator {
     required double burdenPercentage,
     required RentRange rentRange,
     required double actualRent,
+    required BedroomConfiguration bedroom,
+    String? neighborhoodName,
+    double? neighborhoodAverageRent,
   }) {
     final percentage = (burdenPercentage * 100).toStringAsFixed(1);
     final levelLabel = burdenLevel.label;
@@ -195,6 +250,23 @@ class RentCalculator {
     buffer.writeln('• Stretch: \$${rentRange.stretch.toStringAsFixed(0)}/mo '
         '(${(rentRange.stretch / rentRange.conservative * 20).toStringAsFixed(0)}%)');
 
+    // Add neighborhood context if available (with bedroom multiplier applied)
+    if (neighborhoodName != null && neighborhoodAverageRent != null) {
+      buffer.writeln('');
+      buffer.writeln('Neighborhood context:');
+      final adjustedNeighborhoodRent = applyBedroomMultiplier(neighborhoodAverageRent, bedroom);
+      buffer.writeln('$neighborhoodName average ${bedroom.description} rent: \$${adjustedNeighborhoodRent.toStringAsFixed(0)}/mo');
+      
+      final difference = rentRange.balanced - adjustedNeighborhoodRent;
+      final percentDiff = (difference / adjustedNeighborhoodRent) * 100;
+      if (percentDiff.abs() > 1) {
+        final direction = percentDiff > 0 ? 'above' : 'below';
+        buffer.writeln('Your balanced range is ${percentDiff.abs().toStringAsFixed(1)}% $direction the neighborhood average');
+      } else {
+        buffer.writeln('Your balanced range is close to the neighborhood average');
+      }
+    }
+
     return buffer.toString();
   }
 
@@ -202,17 +274,37 @@ class RentCalculator {
     required double netMonthly,
     required RentRange rentRange,
     required bool hasRoommates,
+    required BedroomConfiguration bedroom,
+    String? neighborhoodName,
+    double? neighborhoodAverageRent,
   }) {
     final buffer = StringBuffer();
     buffer.writeln('Your net monthly income: \$${netMonthly.toStringAsFixed(0)}');
     buffer.writeln('');
-    buffer.writeln('Based on your situation${hasRoommates ? " (with roommates)" : " (living alone)"}, '
-        'your affordable rent ranges are:');
+    buffer.writeln('Based on your situation${hasRoommates ? " (with roommates)" : " (living alone)"} '
+        'for a ${bedroom.description} unit, your affordable rent ranges are:');
     buffer.writeln('• Conservative: \$${rentRange.conservative.toStringAsFixed(0)}/mo (20%)');
     buffer.writeln('• Balanced: \$${rentRange.balanced.toStringAsFixed(0)}/mo '
         '(${(rentRange.balanced / rentRange.conservative * 20).toStringAsFixed(0)}%)');
     buffer.writeln('• Stretch: \$${rentRange.stretch.toStringAsFixed(0)}/mo '
         '(${(rentRange.stretch / rentRange.conservative * 20).toStringAsFixed(0)}%)');
+
+    // Add neighborhood context if available (with bedroom multiplier applied)
+    if (neighborhoodName != null && neighborhoodAverageRent != null) {
+      buffer.writeln('');
+      buffer.writeln('Neighborhood context:');
+      final adjustedNeighborhoodRent = applyBedroomMultiplier(neighborhoodAverageRent, bedroom);
+      buffer.writeln('$neighborhoodName average ${bedroom.description} rent: \$${adjustedNeighborhoodRent.toStringAsFixed(0)}/mo');
+      
+      final difference = rentRange.balanced - adjustedNeighborhoodRent;
+      final percentDiff = (difference / adjustedNeighborhoodRent) * 100;
+      if (percentDiff.abs() > 1) {
+        final direction = percentDiff > 0 ? 'above' : 'below';
+        buffer.writeln('Your balanced range is ${percentDiff.abs().toStringAsFixed(1)}% $direction the neighborhood average');
+      } else {
+        buffer.writeln('Your balanced range is close to the neighborhood average');
+      }
+    }
 
     return buffer.toString();
   }

@@ -1,6 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import '../../data/models/calculation_result.dart';
+import '../../data/models/bedroom_config.dart';
 
 /// Service for saving and loading calculation history
 class CalculationHistory {
@@ -69,6 +70,9 @@ class CalculationHistory {
       'burdenLevel': result.burdenLevel.name,
       'burdenPercentage': result.burdenPercentage,
       'insights': result.insights,
+      'selectedBedroom': result.selectedBedroom.index,
+      'selectedNeighborhood': result.selectedNeighborhood,
+      'neighborhoodAverageRent': result.neighborhoodAverageRent,
       'timestamp': DateTime.now().toIso8601String(),
     };
   }
@@ -88,6 +92,11 @@ class CalculationHistory {
       ),
       burdenPercentage: json['burdenPercentage'] as double,
       insights: json['insights'] as String,
+      selectedBedroom: BedroomConfiguration.values[
+        (json['selectedBedroom'] as int?) ?? BedroomConfiguration.oneBedroom.index
+      ],
+      selectedNeighborhood: json['selectedNeighborhood'] as String?,
+      neighborhoodAverageRent: (json['neighborhoodAverageRent'] as num?)?.toDouble(),
     );
   }
 }

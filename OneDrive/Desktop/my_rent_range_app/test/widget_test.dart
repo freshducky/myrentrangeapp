@@ -7,7 +7,7 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:my_rent_range_app/main.dart';
+import 'package:myrentrangeapp/main.dart';
 
 void main() {
   testWidgets('App loads successfully', (WidgetTester tester) async {
