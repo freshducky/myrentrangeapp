@@ -12,10 +12,15 @@ workflows:
         script: |
           cd "OneDrive/Desktop/warm_light_calculator"
           flutter packages pub get
-      - name: Build iOS
+      - name: Configure Xcode project
+        script: |
+          cd "OneDrive/Desktop/warm_light_calculator/ios"
+          xcode-project use-profiles
+          xcode-project update-automatic-signing "Runner" --code-sign-automatically
+      - name: Build iOS IPA
         script: |
           cd "OneDrive/Desktop/warm_light_calculator"
-          flutter build ipa --release
+          flutter build ipa --release --no-codesign
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:
