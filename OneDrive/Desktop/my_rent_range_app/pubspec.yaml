@@ -98,3 +98,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+# Dependency overrides to resolve version conflicts
+dependency_overrides:
+  intl: ^0.20.2  # Match Flutter SDK requirement for Codemagic builds
