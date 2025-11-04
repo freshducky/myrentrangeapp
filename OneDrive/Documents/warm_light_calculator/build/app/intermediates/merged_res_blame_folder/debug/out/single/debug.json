@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.example.warm_light_calculator.app-merged_res-43:/drawable_launch_background.xml.flat",
+        "source": "com.example.warm_light_calculator.app-main-37:/drawable/launch_background.xml"
+    },
+    {
+        "merged": "com.example.warm_light_calculator.app-merged_res-43:/drawable_ic_launcher.xml.flat",
+        "source": "com.example.warm_light_calculator.app-main-37:/drawable/ic_launcher.xml"
+    }
+]

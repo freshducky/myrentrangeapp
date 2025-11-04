@@ -1,0 +1,1 @@
+ C:\\Users\\kturn\\OneDrive\\Documents\\warm_light_calculator\\.dart_tool\\flutter_build\\dd77255919696aea9862876698df4028\\native_assets.json: 

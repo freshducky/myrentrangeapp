@@ -1,0 +1,119 @@
+[
+  {
+    "level_": 0,
+    "message_": "Start JSON generation. Platform version: 21 min SDK version: arm64-v8a",
+    "file_": "C:\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt",
+    "tag_": "profile|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "rebuilding JSON C:\\Users\\kturn\\OneDrive\\Documents\\warm_light_calculator\\android\\app\\.cxx\\Debug\\4y593k5k\\arm64-v8a\\android_gradle_build.json due to:",
+    "file_": "C:\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt",
+    "tag_": "profile|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "- no fingerprint file, will remove stale configuration folder",
+    "file_": "C:\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt",
+    "tag_": "profile|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "removing stale contents from \u0027C:\\Users\\kturn\\OneDrive\\Documents\\warm_light_calculator\\android\\app\\.cxx\\Debug\\4y593k5k\\arm64-v8a\u0027",
+    "file_": "C:\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt",
+    "tag_": "profile|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "created folder \u0027C:\\Users\\kturn\\OneDrive\\Documents\\warm_light_calculator\\android\\app\\.cxx\\Debug\\4y593k5k\\arm64-v8a\u0027",
+    "file_": "C:\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt",
+    "tag_": "profile|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "executing cmake @echo off\n\"C:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\cmake\\\\3.22.1\\\\bin\\\\cmake.exe\" ^\n  \"-HC:\\\\flutter\\\\packages\\\\flutter_tools\\\\gradle\\\\src\\\\main\\\\groovy\" ^\n  \"-DCMAKE_SYSTEM_NAME\u003dAndroid\" ^\n  \"-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON\" ^\n  \"-DCMAKE_SYSTEM_VERSION\u003d21\" ^\n  \"-DANDROID_PLATFORM\u003dandroid-21\" ^\n  \"-DANDROID_ABI\u003darm64-v8a\" ^\n  \"-DCMAKE_ANDROID_ARCH_ABI\u003darm64-v8a\" ^\n  \"-DANDROID_NDK\u003dC:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\ndk\\\\26.3.11579264\" ^\n  \"-DCMAKE_ANDROID_NDK\u003dC:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\ndk\\\\26.3.11579264\" ^\n  \"-DCMAKE_TOOLCHAIN_FILE\u003dC:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\ndk\\\\26.3.11579264\\\\build\\\\cmake\\\\android.toolchain.cmake\" ^\n  \"-DCMAKE_MAKE_PROGRAM\u003dC:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\cmake\\\\3.22.1\\\\bin\\\\ninja.exe\" ^\n  \"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003dC:\\\\Users\\\\kturn\\\\OneDrive\\\\Documents\\\\warm_light_calculator\\\\build\\\\app\\\\intermediates\\\\cxx\\\\Debug\\\\4y593k5k\\\\obj\\\\arm64-v8a\" ^\n  \"-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003dC:\\\\Users\\\\kturn\\\\OneDrive\\\\Documents\\\\warm_light_calculator\\\\build\\\\app\\\\intermediates\\\\cxx\\\\Debug\\\\4y593k5k\\\\obj\\\\arm64-v8a\" ^\n  \"-DCMAKE_BUILD_TYPE\u003dDebug\" ^\n  \"-BC:\\\\Users\\\\kturn\\\\OneDrive\\\\Documents\\\\warm_light_calculator\\\\android\\\\app\\\\.cxx\\\\Debug\\\\4y593k5k\\\\arm64-v8a\" ^\n  -GNinja ^\n  -Wno-dev ^\n  --no-warn-unused-cli\n",
+    "file_": "C:\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt",
+    "tag_": "profile|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "@echo off\n\"C:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\cmake\\\\3.22.1\\\\bin\\\\cmake.exe\" ^\n  \"-HC:\\\\flutter\\\\packages\\\\flutter_tools\\\\gradle\\\\src\\\\main\\\\groovy\" ^\n  \"-DCMAKE_SYSTEM_NAME\u003dAndroid\" ^\n  \"-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON\" ^\n  \"-DCMAKE_SYSTEM_VERSION\u003d21\" ^\n  \"-DANDROID_PLATFORM\u003dandroid-21\" ^\n  \"-DANDROID_ABI\u003darm64-v8a\" ^\n  \"-DCMAKE_ANDROID_ARCH_ABI\u003darm64-v8a\" ^\n  \"-DANDROID_NDK\u003dC:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\ndk\\\\26.3.11579264\" ^\n  \"-DCMAKE_ANDROID_NDK\u003dC:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\ndk\\\\26.3.11579264\" ^\n  \"-DCMAKE_TOOLCHAIN_FILE\u003dC:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\ndk\\\\26.3.11579264\\\\build\\\\cmake\\\\android.toolchain.cmake\" ^\n  \"-DCMAKE_MAKE_PROGRAM\u003dC:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\cmake\\\\3.22.1\\\\bin\\\\ninja.exe\" ^\n  \"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003dC:\\\\Users\\\\kturn\\\\OneDrive\\\\Documents\\\\warm_light_calculator\\\\build\\\\app\\\\intermediates\\\\cxx\\\\Debug\\\\4y593k5k\\\\obj\\\\arm64-v8a\" ^\n  \"-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003dC:\\\\Users\\\\kturn\\\\OneDrive\\\\Documents\\\\warm_light_calculator\\\\build\\\\app\\\\intermediates\\\\cxx\\\\Debug\\\\4y593k5k\\\\obj\\\\arm64-v8a\" ^\n  \"-DCMAKE_BUILD_TYPE\u003dDebug\" ^\n  \"-BC:\\\\Users\\\\kturn\\\\OneDrive\\\\Documents\\\\warm_light_calculator\\\\android\\\\app\\\\.cxx\\\\Debug\\\\4y593k5k\\\\arm64-v8a\" ^\n  -GNinja ^\n  -Wno-dev ^\n  --no-warn-unused-cli\n",
+    "file_": "C:\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt",
+    "tag_": "profile|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "Received process result: 1",
+    "file_": "C:\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt",
+    "tag_": "profile|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "JSON generation completed with problem. Exception: com.android.ide.common.process.ProcessException: Not searching for unused variables given on the command line.\nNot searching for unused variables given on the command line.\n-- The C compiler identification is Clang 17.0.2\n-- The C compiler identification is Clang 17.0.2\n-- The CXX compiler identification is Clang 17.0.2\n-- The CXX compiler identification is Clang 17.0.2\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - failed\n-- Check for working C compiler: C:/Users/kturn/AppData/Local/Android/Sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe\n-- Check for working C compiler: C:/Users/kturn/AppData/Local/Android/Sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe - works\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Detecting C compiler ABI info - failed\n-- Check for working C compiler: C:/Users/kturn/AppData/Local/Android/Sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: C:/Users/kturn/AppData/Local/Android/Sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done\n-- Generating done\n-- Build files have been written to: C:/Users/kturn/OneDrive/Documents/warm_light_calculator/android/app/.cxx/Debug/4y593k5k/arm64-v8a\n-- Check for working C compiler: C:/Users/kturn/AppData/Local/Android/Sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe - works\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: C:/Users/kturn/AppData/Local/Android/Sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring incomplete, errors occurred!\nSee also \"C:/Users/kturn/OneDrive/Documents/warm_light_calculator/android/app/.cxx/Debug/4y593k5k/arm64-v8a/CMakeFiles/CMakeOutput.log\".\nSee also \"C:/Users/kturn/OneDrive/Documents/warm_light_calculator/android/app/.cxx/Debug/4y593k5k/arm64-v8a/CMakeFiles/CMakeError.log\".\n\nC++ build system [configure] failed while executing:\n    @echo off\n    \"C:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\cmake\\\\3.22.1\\\\bin\\\\cmake.exe\" ^\n      \"-HC:\\\\flutter\\\\packages\\\\flutter_tools\\\\gradle\\\\src\\\\main\\\\groovy\" ^\n      \"-DCMAKE_SYSTEM_NAME\u003dAndroid\" ^\n      \"-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON\" ^\n      \"-DCMAKE_SYSTEM_VERSION\u003d21\" ^\n      \"-DANDROID_PLATFORM\u003dandroid-21\" ^\n      \"-DANDROID_ABI\u003darm64-v8a\" ^\n      \"-DCMAKE_ANDROID_ARCH_ABI\u003darm64-v8a\" ^\n      \"-DANDROID_NDK\u003dC:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\ndk\\\\26.3.11579264\" ^\n      \"-DCMAKE_ANDROID_NDK\u003dC:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\ndk\\\\26.3.11579264\" ^\n      \"-DCMAKE_TOOLCHAIN_FILE\u003dC:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\ndk\\\\26.3.11579264\\\\build\\\\cmake\\\\android.toolchain.cmake\" ^\n      \"-DCMAKE_MAKE_PROGRAM\u003dC:\\\\Users\\\\kturn\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\cmake\\\\3.22.1\\\\bin\\\\ninja.exe\" ^\n      \"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003dC:\\\\Users\\\\kturn\\\\OneDrive\\\\Documents\\\\warm_light_calculator\\\\build\\\\app\\\\intermediates\\\\cxx\\\\Debug\\\\4y593k5k\\\\obj\\\\arm64-v8a\" ^\n      \"-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003dC:\\\\Users\\\\kturn\\\\OneDrive\\\\Documents\\\\warm_light_calculator\\\\build\\\\app\\\\intermediates\\\\cxx\\\\Debug\\\\4y593k5k\\\\obj\\\\arm64-v8a\" ^\n      \"-DCMAKE_BUILD_TYPE\u003dDebug\" ^\n      \"-BC:\\\\Users\\\\kturn\\\\OneDrive\\\\Documents\\\\warm_light_calculator\\\\android\\\\app\\\\.cxx\\\\Debug\\\\4y593k5k\\\\arm64-v8a\" ^\n      -GNinja ^\n      -Wno-dev ^\n      --no-warn-unused-cli\n  from C:\\Users\\kturn\\OneDrive\\Documents\\warm_light_calculator\\android\\app\nCMake Error at C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:828 (file):\n  file STRINGS file\n  \"C:/Users/kturn/OneDrive/Documents/warm_light_calculator/android/app/.cxx/Debug/4y593k5k/arm64-v8a/CMakeFiles/3.22.1-g37088a8-dirty/CompilerIdC/CMakeCCompilerId-87923caf.o.tmp\"\n  cannot be read.\nCall Stack (most recent call first):\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)\n  CMakeLists.txt\n\n\nCMake Error at C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:926 (file):\n  file failed to open for reading (Permission denied):\n\n    C:/Users/kturn/OneDrive/Documents/warm_light_calculator/android/app/.cxx/Debug/4y593k5k/arm64-v8a/CMakeFiles/3.22.1-g37088a8-dirty/CompilerIdC/CMakeCCompilerId-87923caf.o.tmp\nCall Stack (most recent call first):\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)\n  CMakeLists.txt\n\n\nCMake Error at C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:929 (string):\n  string begin index: 1 is out of range 0 - 0\nCall Stack (most recent call first):\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)\n  CMakeLists.txt\n\n\nCMake Error at C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:937 (math):\n  math cannot parse the expression: \" * 16 + \": syntax error, unexpected\n  exp_TIMES (2).\nCall Stack (most recent call first):\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)\n  CMakeLists.txt\n\n\nCMake Error at C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:939 (file):\n  file failed to open for reading (Permission denied):\n\n    C:/Users/kturn/OneDrive/Documents/warm_light_calculator/android/app/.cxx/Debug/4y593k5k/arm64-v8a/CMakeFiles/3.22.1-g37088a8-dirty/CompilerIdC/CMakeCCompilerId-87923caf.o.tmp\nCall Stack (most recent call first):\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)\n  CMakeLists.txt\n\n\nCMake Error at C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:980 (file):\n  file failed to open for reading (Permission denied):\n\n    C:/Users/kturn/OneDrive/Documents/warm_light_calculator/android/app/.cxx/Debug/4y593k5k/arm64-v8a/CMakeFiles/3.22.1-g37088a8-dirty/CompilerIdC/CMakeCCompilerId-87923caf.o.tmp\nCall Stack (most recent call first):\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)\n  CMakeLists.txt\n\n\nCMake Error at C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:828 (file):\n  file STRINGS file\n  \"C:/Users/kturn/OneDrive/Documents/warm_light_calculator/android/app/.cxx/Debug/4y593k5k/arm64-v8a/CMakeFiles/3.22.1-g37088a8-dirty/CompilerIdC/CMakeCCompilerId.o\"\n  cannot be read.\nCall Stack (most recent call first):\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)\n  C:/Users/kturn/AppData/Local/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)\n  CMakeLists.txt",
+    "file_": "C:\\flutter\\packages\\flutter_tools\\gradle\\src\\main\\groovy\\CMakeLists.txt",
+    "tag_": "profile|arm64-v8a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  }
+]

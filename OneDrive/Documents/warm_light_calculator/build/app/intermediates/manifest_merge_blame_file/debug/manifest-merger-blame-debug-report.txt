@@ -1,0 +1,151 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.warm_light_calculator"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="35" />
+9-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml
+10
+11    <permission
+11-->[androidx.core:core:1.13.1] C:\Users\kturn\.gradle\caches\8.9\transforms\488b9f5b0b8e7f479ba70b1f86b180af\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+12        android:name="com.example.warm_light_calculator.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+12-->[androidx.core:core:1.13.1] C:\Users\kturn\.gradle\caches\8.9\transforms\488b9f5b0b8e7f479ba70b1f86b180af\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+13        android:protectionLevel="signature" />
+13-->[androidx.core:core:1.13.1] C:\Users\kturn\.gradle\caches\8.9\transforms\488b9f5b0b8e7f479ba70b1f86b180af\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+14
+15    <uses-permission android:name="com.example.warm_light_calculator.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+15-->[androidx.core:core:1.13.1] C:\Users\kturn\.gradle\caches\8.9\transforms\488b9f5b0b8e7f479ba70b1f86b180af\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+15-->[androidx.core:core:1.13.1] C:\Users\kturn\.gradle\caches\8.9\transforms\488b9f5b0b8e7f479ba70b1f86b180af\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+16
+17    <application
+18        android:name="android.app.Application"
+18-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:4:9-42
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.13.1] C:\Users\kturn\.gradle\caches\8.9\transforms\488b9f5b0b8e7f479ba70b1f86b180af\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+20        android:debuggable="true"
+21        android:icon="@drawable/ic_launcher"
+21-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:5:9-45
+22        android:label="Warm Light Calculator" >
+22-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:3:9-46
+23        <activity
+23-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:6:9-22:20
+24            android:name="com.example.warm_light_calculator.MainActivity"
+24-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:7:13-41
+25            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+25-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:11:13-163
+26            android:exported="true"
+26-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:8:13-36
+27            android:hardwareAccelerated="true"
+27-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:12:13-47
+28            android:launchMode="singleTop"
+28-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:9:13-43
+29            android:theme="@style/LaunchTheme"
+29-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:10:13-47
+30            android:windowSoftInputMode="adjustResize" >
+30-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:13:13-55
+31            <meta-data
+31-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:14:13-17:17
+32                android:name="io.flutter.embedding.android.NormalTheme"
+32-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:15:15-70
+33                android:resource="@style/NormalTheme" />
+33-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:16:15-52
+34
+35            <intent-filter android:autoVerify="true" >
+35-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:18:13-21:29
+35-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:18:28-53
+36                <action android:name="android.intent.action.MAIN" />
+36-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:19:17-68
+36-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:19:25-66
+37
+38                <category android:name="android.intent.category.LAUNCHER" />
+38-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:20:17-76
+38-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:20:27-74
+39            </intent-filter>
+40        </activity>
+41
+42        <meta-data
+42-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:23:9-25:33
+43            android:name="flutterEmbedding"
+43-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:24:13-44
+44            android:value="2" />
+44-->C:\Users\kturn\OneDrive\Documents\warm_light_calculator\android\app\src\main\AndroidManifest.xml:25:13-30
+45
+46        <uses-library
+46-->[androidx.window:window:1.2.0] C:\Users\kturn\.gradle\caches\8.9\transforms\88ce7883115e6a4dd7a6a56e7c7506b1\transformed\jetified-window-1.2.0\AndroidManifest.xml:23:9-25:40
+47            android:name="androidx.window.extensions"
+47-->[androidx.window:window:1.2.0] C:\Users\kturn\.gradle\caches\8.9\transforms\88ce7883115e6a4dd7a6a56e7c7506b1\transformed\jetified-window-1.2.0\AndroidManifest.xml:24:13-54
+48            android:required="false" />
+48-->[androidx.window:window:1.2.0] C:\Users\kturn\.gradle\caches\8.9\transforms\88ce7883115e6a4dd7a6a56e7c7506b1\transformed\jetified-window-1.2.0\AndroidManifest.xml:25:13-37
+49        <uses-library
+49-->[androidx.window:window:1.2.0] C:\Users\kturn\.gradle\caches\8.9\transforms\88ce7883115e6a4dd7a6a56e7c7506b1\transformed\jetified-window-1.2.0\AndroidManifest.xml:26:9-28:40
+50            android:name="androidx.window.sidecar"
+50-->[androidx.window:window:1.2.0] C:\Users\kturn\.gradle\caches\8.9\transforms\88ce7883115e6a4dd7a6a56e7c7506b1\transformed\jetified-window-1.2.0\AndroidManifest.xml:27:13-51
+51            android:required="false" />
+51-->[androidx.window:window:1.2.0] C:\Users\kturn\.gradle\caches\8.9\transforms\88ce7883115e6a4dd7a6a56e7c7506b1\transformed\jetified-window-1.2.0\AndroidManifest.xml:28:13-37
+52
+53        <provider
+53-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\kturn\.gradle\caches\8.9\transforms\6923b529f168146110f8dcff6f182c03\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:24:9-32:20
+54            android:name="androidx.startup.InitializationProvider"
+54-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\kturn\.gradle\caches\8.9\transforms\6923b529f168146110f8dcff6f182c03\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:25:13-67
+55            android:authorities="com.example.warm_light_calculator.androidx-startup"
+55-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\kturn\.gradle\caches\8.9\transforms\6923b529f168146110f8dcff6f182c03\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:26:13-68
+56            android:exported="false" >
+56-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\kturn\.gradle\caches\8.9\transforms\6923b529f168146110f8dcff6f182c03\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:27:13-37
+57            <meta-data
+57-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\kturn\.gradle\caches\8.9\transforms\6923b529f168146110f8dcff6f182c03\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+58                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+58-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\kturn\.gradle\caches\8.9\transforms\6923b529f168146110f8dcff6f182c03\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+59                android:value="androidx.startup" />
+59-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\kturn\.gradle\caches\8.9\transforms\6923b529f168146110f8dcff6f182c03\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+60            <meta-data
+60-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+61                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+61-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+62                android:value="androidx.startup" />
+62-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+63        </provider>
+64
+65        <receiver
+65-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+66            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+66-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+67            android:directBootAware="false"
+67-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+68            android:enabled="true"
+68-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+69            android:exported="true"
+69-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+70            android:permission="android.permission.DUMP" >
+70-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+71            <intent-filter>
+71-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+72                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+72-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+72-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+73            </intent-filter>
+74            <intent-filter>
+74-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+75                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+75-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+75-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+76            </intent-filter>
+77            <intent-filter>
+77-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+78                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+78-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+78-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+79            </intent-filter>
+80            <intent-filter>
+80-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+81                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+81-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+81-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kturn\.gradle\caches\8.9\transforms\1f74d148dd67fc32eb6b16838185338f\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+82            </intent-filter>
+83        </receiver>
+84    </application>
+85
+86</manifest>
