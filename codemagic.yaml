@@ -9,9 +9,13 @@ workflows:
       cocoapods: default
     scripts:
       - name: Get Flutter packages
-        script: flutter packages pub get
+        script: |
+          cd "OneDrive/Desktop/warm_light_calculator"
+          flutter packages pub get
       - name: Build iOS
-        script: flutter build ios --release --no-codesign
+        script: |
+          cd "OneDrive/Desktop/warm_light_calculator"
+          flutter build ios --release --no-codesign
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:
