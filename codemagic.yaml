@@ -16,7 +16,6 @@ workflows:
         script: |
           cd "OneDrive/Desktop/warm_light_calculator/ios"
           xcode-project use-profiles
-          xcode-project update-automatic-signing "Runner" --code-sign-automatically
       - name: Build iOS IPA
         script: |
           cd "OneDrive/Desktop/warm_light_calculator"
