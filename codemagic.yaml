@@ -19,11 +19,9 @@ workflows:
       - name: Build iOS IPA
         script: |
           cd "OneDrive/Desktop/warm_light_calculator"
-          flutter build ipa --release --no-codesign
-          ls -la build/ios/ipa/
+          flutter build ipa --release
     artifacts:
       - build/ios/ipa/*.ipa
-      - build/ios/archive/*.xcarchive
     publishing:
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
