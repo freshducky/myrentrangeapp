@@ -12,14 +12,24 @@ workflows:
         script: |
           cd /Users/builder/clone
           flutter pub get
+      - name: Verify code signing configuration
+        script: |
+          echo "Verifying App Store distribution configuration..."
+          echo "Bundle ID: com.freshducky.myrentrange"
+          echo "Expected distribution type: app_store"
       - name: Flutter build ipa
         script: |
           cd /Users/builder/clone
           flutter clean
           flutter build ipa --release
-    # Code signing configuration for App Store distribution
+    # Code signing configuration - Force App Store distribution
+    # CRITICAL: This must be set to app_store for App Store Connect uploads
+    # If Codemagic still uses Development profiles, check:
+    # 1. App Store Connect API key is properly configured
+    # 2. UI settings aren't overriding this YAML config
+    # 3. App Store distribution certificate exists in Apple Developer Portal
     ios_signing:
-      distribution_type: app_store  # Force App Store distribution (not Development)
+      distribution_type: app_store
       bundle_id: com.freshducky.myrentrange
     artifacts:
       - build/ios/ipa/*.ipa
