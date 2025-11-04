@@ -15,7 +15,7 @@ workflows:
       - name: Build iOS
         script: |
           cd "OneDrive/Desktop/warm_light_calculator"
-          flutter build ios --release --no-codesign
+          flutter build ios --release
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:
