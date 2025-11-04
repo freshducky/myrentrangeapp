@@ -1,6 +1,7 @@
 workflows:
   ios-workflow:
     name: iOS Build
+    # Warm Light Calculator CI/CD configuration
     environment:
       groups:
         - app_store_credentials
