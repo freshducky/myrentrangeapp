@@ -47,5 +47,9 @@
 	<true/>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-3940256099942544~6300978111</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>MyRentRange uses your location to automatically detect your state for accurate tax calculations and rent affordability estimates.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>MyRentRange uses your location to automatically detect your state for accurate tax calculations and rent affordability estimates.</string>
 </dict>
 </plist>
