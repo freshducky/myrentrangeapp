@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'models/settings_model.dart';
 import 'utils/number_formatter.dart';
-import 'dart:ui' as ui;
+import 'dart:math' as math;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -280,22 +282,22 @@ class _WarmLightCalculatorAppState extends State<WarmLightCalculatorApp> {
           displayLarge: TextStyle(
             fontSize: 48,
             fontWeight: FontWeight.w300,
-            color: Color(0xFFD9A06D),
+            color: Color(0xFFCA7C3A), // Darker warm color for better contrast in dark mode
           ),
           displayMedium: TextStyle(
             fontSize: 36,
             fontWeight: FontWeight.w400,
-            color: Color(0xFFD9A06D),
+            color: Color(0xFFCA7C3A),
           ),
           headlineLarge: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w500,
-            color: Color(0xFFD9A06D),
+            color: Color(0xFFCA7C3A),
           ),
           bodyLarge: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w400,
-            color: Color(0xFFD9A06D),
+            color: Color(0xFFCA7C3A),
           ),
         ),
         colorScheme: const ColorScheme.dark(
@@ -373,13 +375,185 @@ class _WarmLightCalculatorAppState extends State<WarmLightCalculatorApp> {
 
   @override
   Widget build(BuildContext context) {
+    final locale = Locale(_settings.language);
     return MaterialApp(
       title: 'Warm Light Calculator',
       theme: _getTheme(),
+      locale: locale,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'), // English
+        Locale('es'), // Spanish
+        Locale('fr'), // French
+        Locale('zh'), // Mandarin
+        Locale('ja'), // Japanese
+        Locale('fi'), // Finnish
+        Locale('af'), // Afrikaans
+        Locale('sw'), // Swahili
+        Locale('de'), // German
+        Locale('pt'), // Portuguese
+        Locale('it'), // Italian
+        Locale('ru'), // Russian
+        Locale('ar'), // Arabic
+        Locale('hi'), // Hindi
+        Locale('ko'), // Korean
+      ],
       home: _settingsLoaded
           ? CalculatorScreen(settings: _settings, onSettingsChanged: _loadSettings)
           : const SplashScreen(),
       debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+// Background finish widgets
+class _MatteBackgroundPainter extends CustomPainter {
+  final Color baseColor;
+  
+  _MatteBackgroundPainter(this.baseColor);
+  
+  @override
+  void paint(Canvas canvas, Size size) {
+    // Make matte 1.5 shades lighter
+    final lighterColor = Color.fromRGBO(
+      (baseColor.red + 38).clamp(0, 255),
+      (baseColor.green + 38).clamp(0, 255),
+      (baseColor.blue + 38).clamp(0, 255),
+      1.0,
+    );
+    final paint = Paint()..color = lighterColor;
+    canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height), paint);
+    
+    // Add more visible matte texture with more speckles
+    final random = math.Random(42);
+    // More dots for denser texture
+    for (int i = 0; i < 15000; i++) {
+      final x = random.nextDouble() * size.width;
+      final y = random.nextDouble() * size.height;
+      final opacity = random.nextDouble() * 0.08 + 0.02; // More visible
+      paint.color = Colors.black.withOpacity(opacity);
+      canvas.drawCircle(Offset(x, y), 1.5, paint);
+    }
+    // Add more lighter spots for depth
+    for (int i = 0; i < 5000; i++) {
+      final x = random.nextDouble() * size.width;
+      final y = random.nextDouble() * size.height;
+      final opacity = random.nextDouble() * 0.06;
+      paint.color = Colors.white.withOpacity(opacity);
+      canvas.drawCircle(Offset(x, y), 1, paint);
+    }
+  }
+  
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+class _MatteBackground extends StatelessWidget {
+  final Color color;
+  final Widget child;
+  
+  const _MatteBackground({required this.color, required this.child});
+  
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: _MatteBackgroundPainter(color),
+      child: child,
+    );
+  }
+}
+
+class _PlasticBackground extends StatelessWidget {
+  final Color baseColor;
+  final Widget child;
+  
+  const _PlasticBackground({required this.baseColor, required this.child});
+  
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color.lerp(baseColor, Colors.white, 0.18) ?? baseColor,
+            Color.lerp(baseColor, Colors.white, 0.12) ?? baseColor,
+            baseColor,
+            Color.lerp(baseColor, Colors.black, 0.10) ?? baseColor,
+          ],
+          stops: const [0.0, 0.25, 0.5, 1.0],
+        ),
+      ),
+      child: Stack(
+        children: [
+          // Much stronger reflective highlight overlay (shinier plastic)
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 250,
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  center: Alignment.topLeft,
+                  radius: 1.2,
+                  colors: [
+                    Colors.white.withOpacity(0.40),
+                    Colors.white.withOpacity(0.25),
+                    Colors.white.withOpacity(0.10),
+                    Colors.white.withOpacity(0.0),
+                  ],
+                  stops: const [0.0, 0.25, 0.5, 1.0],
+                ),
+              ),
+            ),
+          ),
+          // Additional highlight for extra shine
+          Positioned(
+            top: 50,
+            left: 50,
+            child: Container(
+              width: 300,
+              height: 300,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    Colors.white.withOpacity(0.15),
+                    Colors.white.withOpacity(0.0),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          // Additional subtle gradient for depth
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: 150,
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.transparent,
+                    Colors.black.withOpacity(0.08),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          child,
+        ],
+      ),
     );
   }
 }
@@ -398,7 +572,7 @@ class CalculatorScreen extends StatefulWidget {
   State<CalculatorScreen> createState() => _CalculatorScreenState();
 }
 
-class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerProviderStateMixin {
+class _CalculatorScreenState extends State<CalculatorScreen> {
   String _display = '0';
   String _previousValue = '';
   String _operation = '';
@@ -407,22 +581,18 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
   String? _tipBreakdown; // Stores tip amount for display
   String? _previousDisplay; // For undo functionality
   final FlutterTts _tts = FlutterTts();
-  late AnimationController _buttonAnimationController;
+  final AudioPlayer _audioPlayer = AudioPlayer();
 
   @override
   void initState() {
     super.initState();
-    _buttonAnimationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 100),
-    );
     _tts.setLanguage("en-US");
     _tts.setSpeechRate(0.5);
   }
 
   @override
   void dispose() {
-    _buttonAnimationController.dispose();
+    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -489,20 +659,46 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
     return const Color(0xFF8B4513);
   }
 
+  Color _getBackgroundColor(ThemeData theme) {
+    return theme.scaffoldBackgroundColor;
+  }
+
+  Widget _buildBackgroundFinish(Widget child, ThemeData theme) {
+    final backgroundColor = _getBackgroundColor(theme);
+    
+    switch (widget.settings.backgroundFinish) {
+      case 'matte':
+        return _MatteBackground(color: backgroundColor, child: child);
+      case 'plastic':
+        return _PlasticBackground(baseColor: backgroundColor, child: child);
+      case 'basic':
+      default:
+        return child;
+    }
+  }
+
   Future<void> _playSound() async {
     if (widget.settings.soundEffects) {
       HapticFeedback.lightImpact();
+      try {
+        await _audioPlayer.play(AssetSource('click_sound.mp3'));
+      } catch (e) {
+        // Silently handle audio errors
+      }
     }
   }
 
   Future<void> _speakText(String text) async {
-    if (widget.settings.textToSpeech && text != 'Error') {
+    final l10n = AppLocalizations.of(context);
+    final errorText = l10n?.error ?? 'Error';
+    if (widget.settings.textToSpeech && text != errorText && text != 'Error') {
       await _tts.speak(text);
     }
   }
 
   Future<void> _copyToClipboard() async {
-    if (_display != 'Error') {
+    final l10n = AppLocalizations.of(context)!;
+    if (_display != l10n.error && _display != 'Error') {
       await Clipboard.setData(ClipboardData(text: _display));
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -529,9 +725,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
       final double roundedTip = (tip * 100).round() / 100;
       final double roundedResult = (result * 100).round() / 100;
       
+      final l10n = AppLocalizations.of(context)!;
       setState(() {
         _display = _formatNumber(roundedResult);
-        _tipBreakdown = 'Tip: ${_formatNumber(roundedTip)}';
+        _tipBreakdown = l10n.tipBreakdown(_formatNumber(roundedTip));
         _waitingForOperand = true;
         _operation = ''; // Clear any pending operation
         _previousValue = ''; // Clear previous value
@@ -540,17 +737,69 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
       _playSound();
       _speakText(_display);
     } catch (e) {
+      final l10n = AppLocalizations.of(context)!;
       setState(() {
-        _display = 'Error';
+        _display = l10n.error;
         _waitingForOperand = false;
         _tipBreakdown = null;
       });
-      _speakText('Error');
+      _speakText(l10n.error);
     }
   }
 
   String _formatNumber(double number) {
-    if (number.isNaN || number.isInfinite) return 'Error';
+    final l10n = AppLocalizations.of(context);
+    final errorText = l10n?.error ?? 'Error';
+    if (number.isNaN || number.isInfinite) return errorText;
+    
+    // Limit to 12 significant figures
+    if (number.abs() >= 1) {
+      // For numbers >= 1, limit total digits
+      final String numberStr = number.toString();
+      final parts = numberStr.split('.');
+      final integerPart = parts[0];
+      final decimalPart = parts.length > 1 ? parts[1] : '';
+      
+      // Limit total digits to 12
+      final totalDigits = integerPart.replaceAll('-', '').length + decimalPart.length;
+      if (totalDigits > 12) {
+        if (integerPart.replaceAll('-', '').length >= 12) {
+          // If integer part is already 12+ digits, just show integer
+          return NumberFormatter.formatNumber(integerPart);
+        } else {
+          // Limit decimal places to fit within 12 total digits
+          final maxDecimalPlaces = 12 - integerPart.replaceAll('-', '').length;
+          final limitedDecimal = decimalPart.length > maxDecimalPlaces 
+              ? decimalPart.substring(0, maxDecimalPlaces) 
+              : decimalPart;
+          return NumberFormatter.formatNumber('$integerPart${limitedDecimal.isNotEmpty ? '.$limitedDecimal' : ''}');
+        }
+      }
+    } else {
+      // For numbers < 1, limit to 12 significant figures total
+      final String numberStr = number.toString();
+      if (numberStr.length > 14) { // Account for "0." prefix
+        // Use scientific notation for very small numbers, or truncate
+        final parts = numberStr.split('.');
+        if (parts.length > 1) {
+          final decimalPart = parts[1];
+          // Find first non-zero digit
+          int firstNonZero = 0;
+          for (int i = 0; i < decimalPart.length; i++) {
+            if (decimalPart[i] != '0') {
+              firstNonZero = i;
+              break;
+            }
+          }
+          // Keep 12 significant figures from first non-zero
+          final significantDigits = decimalPart.substring(firstNonZero);
+          final limited = significantDigits.length > 12 
+              ? significantDigits.substring(0, 12) 
+              : significantDigits;
+          return NumberFormatter.formatNumber('0.${'0' * firstNonZero}$limited');
+        }
+      }
+    }
     
     final String numberStr = number % 1 == 0 
         ? number.toInt().toString() 
@@ -571,7 +820,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
 
   void _saveStateForUndo() {
     // Save current state before making changes
-    if (_display != 'Error' && _display != '0') {
+    final l10n = AppLocalizations.of(context);
+    final errorText = l10n?.error ?? 'Error';
+    if (_display != errorText && _display != 'Error' && _display != '0') {
       _previousDisplay = _display;
     }
   }
@@ -580,7 +831,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
     await _playSound();
     
     // Handle undo separately
-    if (value == '↶') {
+    final l10n = AppLocalizations.of(context)!;
+    if (value == l10n.undo || value == 'UNDO') {
       _undo();
       return;
     }
@@ -598,13 +850,15 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
         _waitingForOperand = false;
         _tipBreakdown = null;
       } else if (value == '⌫') {
-        if (_display != 'Error' && _display.length > 1) {
+        final l10n = AppLocalizations.of(context);
+        final errorText = l10n?.error ?? 'Error';
+        if (_display != errorText && _display != 'Error' && _display.length > 1) {
           String newDisplay = _display.substring(0, _display.length - 1).replaceAll(',', '');
           _display = NumberFormatter.formatNumber(newDisplay);
         } else {
           _display = '0';
         }
-      } else if (value == '=') {
+      } else if (value == l10n.enter || value == 'ENTER') {
         _tipBreakdown = null; // Clear tip breakdown on new calculation
         _calculate();
       } else if (['+', '-', '×', '÷'].contains(value)) {
@@ -630,7 +884,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
           }
         }
       } else {
-        if (_waitingForOperand || _display == 'Error') {
+        final l10n = AppLocalizations.of(context);
+        final errorText = l10n?.error ?? 'Error';
+        if (_waitingForOperand || _display == errorText || _display == 'Error') {
           _display = value;
           _waitingForOperand = false;
           _tipBreakdown = null; // Clear tip breakdown when entering new number
@@ -654,7 +910,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
       }
     });
 
-    if (['+', '-', '×', '÷', '='].contains(value)) {
+    if (['+', '-', '×', '÷', l10n.enter, 'ENTER'].contains(value)) {
       await _speakText(value);
     } else if (value.length == 1 && RegExp(r'[0-9]').hasMatch(value)) {
       await _speakText(value);
@@ -711,13 +967,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
           if (current != 0) {
             result = prev / current;
           } else {
+            final l10n = AppLocalizations.of(context)!;
             setState(() {
-              _display = 'Error';
+              _display = l10n.error;
               _operation = '';
               _previousValue = '';
               _waitingForOperand = false;
             });
-            _speakText('Error');
+            _speakText(l10n.error);
             return;
           }
           break;
@@ -732,48 +989,32 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
 
       _speakText(_display);
     } catch (e) {
+      final l10n = AppLocalizations.of(context)!;
       setState(() {
-        _display = 'Error';
+        _display = l10n.error;
         _operation = '';
         _previousValue = '';
         _waitingForOperand = false;
       });
-      _speakText('Error');
+      _speakText(l10n.error);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
     
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Warm Light Calculator',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () async {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SettingsScreen(settings: widget.settings),
-                ),
-              );
-              widget.onSettingsChanged();
-              setState(() {}); // Refresh UI
-            },
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
+      body: _buildBackgroundFinish(
+        SafeArea(
+          child: Stack(
+            children: [
+              Column(
+                children: [
             // Display
             Expanded(
-              flex: 2,
+              flex: 1,
               child: GestureDetector(
                 onLongPress: _copyToClipboard,
                 child: Container(
@@ -819,14 +1060,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
             ),
             // Tip buttons row
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               child: Row(
                 children: [
-                  _buildTipButton('Tip 15%', 15, theme),
+                  _buildTipButton(l10n.tip15, 15, theme),
                   const SizedBox(width: 8),
-                  _buildTipButton('Tip 20%', 20, theme),
+                  _buildTipButton(l10n.tip20, 20, theme),
                   const SizedBox(width: 8),
-                  _buildTipButton('Tip 25%', 25, theme),
+                  _buildTipButton(l10n.tip25, 25, theme),
                 ],
               ),
             ),
@@ -834,7 +1075,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
             Expanded(
               flex: 3,
               child: Container(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: Column(
                   children: [
                     // Row 1: Memory buttons (M+, M-, MR, MC)
@@ -881,24 +1122,24 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
                         ],
                       ),
                     ),
-                    // Row 5: 1, 2, 3, Equals
+                    // Row 5: 1, 2, 3, Undo
                     Expanded(
                       child: Row(
                         children: [
                           _buildButton('1', theme: theme),
                           _buildButton('2', theme: theme),
                           _buildButton('3', theme: theme),
-                          _buildButton('=', isOperation: true, isEquals: true, theme: theme),
+                          _buildButton(l10n.undo, isSpecial: true, theme: theme),
                         ],
                       ),
                     ),
-                    // Row 6: 0, Decimal, Undo
+                    // Row 6: 0, Decimal, Equals
                     Expanded(
                       child: Row(
                         children: [
                           _buildButton('0', theme: theme),
                           _buildButton('.', theme: theme),
-                          _buildButton('↶', isSpecial: true, theme: theme),
+                          _buildButton(l10n.enter, isOperation: true, isEquals: true, theme: theme),
                         ],
                       ),
                     ),
@@ -906,8 +1147,33 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
                 ),
               ),
             ),
+              ],
+            ),
+            // Settings button in top right
+            Positioned(
+              top: 8,
+              right: 8,
+              child: IconButton(
+                icon: Icon(
+                  Icons.settings,
+                  color: theme.textTheme.displayLarge?.color,
+                ),
+                onPressed: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SettingsScreen(settings: widget.settings, onSettingsChanged: widget.onSettingsChanged),
+                    ),
+                  );
+                  widget.onSettingsChanged();
+                  setState(() {}); // Refresh UI
+                },
+              ),
+            ),
           ],
         ),
+      ),
+        theme,
       ),
     );
   }
@@ -916,30 +1182,32 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
     final backgroundColor = _getButtonColor(false, false, false, true, theme);
     final textColor = _getButtonTextColor(false, false, false, theme);
     
+    // Create lighter and darker versions for the glossy gradient
+    final lighterColor = Color.fromRGBO(
+      (backgroundColor.red + 50).clamp(0, 255),
+      (backgroundColor.green + 50).clamp(0, 255),
+      (backgroundColor.blue + 50).clamp(0, 255),
+      1.0,
+    );
+    final darkerColor = Color.fromRGBO(
+      (backgroundColor.red - 30).clamp(0, 255),
+      (backgroundColor.green - 30).clamp(0, 255),
+      (backgroundColor.blue - 30).clamp(0, 255),
+      1.0,
+    );
+    
     return Expanded(
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 2),
-        child: ElevatedButton(
+        margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+        height: 60,
+        child: _TipButtonWidget(
+          label: label,
+          backgroundColor: backgroundColor,
+          lighterColor: lighterColor,
+          darkerColor: darkerColor,
+          textColor: textColor,
+          backgroundFinish: widget.settings.backgroundFinish,
           onPressed: () => _applyTip(percentage),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: backgroundColor,
-            foregroundColor: textColor,
-            elevation: 2,
-            minimumSize: const Size(0, 48), // Minimum touch target
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-          child: Text(
-            label,
-            textAlign: TextAlign.center,
-            maxLines: 1,
-            overflow: TextOverflow.visible,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
         ),
       ),
     );
@@ -948,49 +1216,419 @@ class _CalculatorScreenState extends State<CalculatorScreen> with SingleTickerPr
   Widget _buildButton(String text, {bool isOperation = false, bool isSpecial = false, bool isEquals = false, required ThemeData theme}) {
     final backgroundColor = _getButtonColor(isOperation, isSpecial, isEquals, false, theme);
     final textColor = _getButtonTextColor(isOperation, isSpecial, isEquals, theme);
+    
+    // Create lighter and darker versions for the glossy gradient
+    final lighterColor = Color.fromRGBO(
+      (backgroundColor.red + 50).clamp(0, 255),
+      (backgroundColor.green + 50).clamp(0, 255),
+      (backgroundColor.blue + 50).clamp(0, 255),
+      1.0,
+    );
+    final darkerColor = Color.fromRGBO(
+      (backgroundColor.red - 30).clamp(0, 255),
+      (backgroundColor.green - 30).clamp(0, 255),
+      (backgroundColor.blue - 30).clamp(0, 255),
+      1.0,
+    );
 
     return Expanded(
       child: Container(
-        margin: const EdgeInsets.all(4),
-        child: AnimatedBuilder(
-          animation: _buttonAnimationController,
-          builder: (context, child) {
-            return Transform.scale(
-              scale: 1.0 - (_buttonAnimationController.value * 0.05),
-              child: ElevatedButton(
-                onPressed: () async {
-                  _buttonAnimationController.forward().then((_) {
-                    _buttonAnimationController.reverse();
-                  });
-                  await _onButtonPressed(text);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: backgroundColor,
-                  foregroundColor: textColor,
-                  elevation: 2,
-                  minimumSize: const Size(0, 48), // Minimum touch target for accessibility
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  textStyle: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                child: Text(text),
-              ),
-            );
-          },
+        margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+        height: 60,
+        child: _CalculatorButtonWidget(
+          text: text,
+          backgroundColor: backgroundColor,
+          lighterColor: lighterColor,
+          darkerColor: darkerColor,
+          textColor: textColor,
+          backgroundFinish: widget.settings.backgroundFinish,
+          onPressed: () => _onButtonPressed(text),
         ),
       ),
     );
   }
 }
 
+class _CalculatorButtonWidget extends StatefulWidget {
+  final String text;
+  final Color backgroundColor;
+  final Color lighterColor;
+  final Color darkerColor;
+  final Color textColor;
+  final String backgroundFinish;
+  final VoidCallback onPressed;
+
+  const _CalculatorButtonWidget({
+    required this.text,
+    required this.backgroundColor,
+    required this.lighterColor,
+    required this.darkerColor,
+    required this.textColor,
+    required this.backgroundFinish,
+    required this.onPressed,
+  });
+
+  @override
+  State<_CalculatorButtonWidget> createState() => _CalculatorButtonWidgetState();
+}
+
+class _CalculatorButtonWidgetState extends State<_CalculatorButtonWidget> with SingleTickerProviderStateMixin {
+  late AnimationController _pressController;
+  
+  @override
+  void initState() {
+    super.initState();
+    _pressController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 150),
+    );
+  }
+  
+  @override
+  void dispose() {
+    _pressController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _pressController,
+      builder: (context, child) {
+        final pressProgress = _pressController.value;
+        final pressOffset = pressProgress * 2.0;
+        
+        // Darken colors on press
+        final currentBaseColor = Color.lerp(
+          widget.backgroundColor,
+          widget.darkerColor,
+          pressProgress * 0.3,
+        )!;
+        final currentLightColor = Color.lerp(
+          widget.lighterColor,
+          widget.backgroundColor,
+          pressProgress * 0.4,
+        )!;
+        
+        // Reduce shadow on press (cave in effect)
+        final shadowOffset = 5 - (pressProgress * 3);
+        final shadowBlur = 8 - (pressProgress * 5);
+        final highlightOpacity = 0.4 - (pressProgress * 0.3);
+        
+        // Add extra drop shadows for plastic finish
+        final List<BoxShadow> shadows = [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.4 - pressProgress * 0.2),
+            offset: Offset(0, shadowOffset),
+            blurRadius: shadowBlur,
+            spreadRadius: -1,
+          ),
+        ];
+        
+        if (widget.backgroundFinish == 'plastic') {
+          // Add multiple drop shadows for plastic finish
+          shadows.addAll([
+            BoxShadow(
+              color: Colors.black.withOpacity(0.15 - pressProgress * 0.05),
+              offset: Offset(0, shadowOffset + 2),
+              blurRadius: shadowBlur + 4,
+              spreadRadius: 0,
+            ),
+            BoxShadow(
+              color: Colors.black.withOpacity(0.10 - pressProgress * 0.03),
+              offset: Offset(0, shadowOffset + 4),
+              blurRadius: shadowBlur + 8,
+              spreadRadius: 0,
+            ),
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              offset: Offset(2, shadowOffset + 1),
+              blurRadius: shadowBlur + 2,
+              spreadRadius: 0,
+            ),
+          ]);
+        }
+        
+        return GestureDetector(
+          onTapDown: (_) {
+            _pressController.forward();
+          },
+          onTapUp: (_) {
+            _pressController.reverse();
+            widget.onPressed();
+          },
+          onTapCancel: () {
+            _pressController.reverse();
+          },
+          child: Transform.translate(
+            offset: Offset(0, pressOffset),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    currentLightColor,
+                    currentBaseColor,
+                    widget.darkerColor,
+                  ],
+                  stops: const [0.0, 0.5, 1.0],
+                ),
+                boxShadow: shadows,
+              ),
+              child: Stack(
+                children: [
+                  // Glossy highlight overlay (oval-shaped on top-left)
+                  Positioned(
+                    top: -10,
+                    left: -10,
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: RadialGradient(
+                          colors: [
+                            Colors.white.withOpacity(highlightOpacity),
+                            Colors.white.withOpacity(0.0),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Button content
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(12),
+                      onTap: null,
+                      child: Container(
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: widget.text == 'UNDO' || widget.text == 'ENTER' || 
+                               widget.text == AppLocalizations.of(context)?.undo || 
+                               widget.text == AppLocalizations.of(context)?.enter
+                          ? Text(
+                              widget.text,
+                              maxLines: 1,
+                              overflow: TextOverflow.visible,
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: -0.5,
+                                color: widget.textColor,
+                              ),
+                            )
+                          : Text(
+                              widget.text,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w500,
+                                color: widget.textColor,
+                              ),
+                            ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _TipButtonWidget extends StatefulWidget {
+  final String label;
+  final Color backgroundColor;
+  final Color lighterColor;
+  final Color darkerColor;
+  final Color textColor;
+  final String backgroundFinish;
+  final VoidCallback onPressed;
+
+  const _TipButtonWidget({
+    required this.label,
+    required this.backgroundColor,
+    required this.lighterColor,
+    required this.darkerColor,
+    required this.textColor,
+    required this.backgroundFinish,
+    required this.onPressed,
+  });
+
+  @override
+  State<_TipButtonWidget> createState() => _TipButtonWidgetState();
+}
+
+class _TipButtonWidgetState extends State<_TipButtonWidget> with SingleTickerProviderStateMixin {
+  late AnimationController _pressController;
+  
+  @override
+  void initState() {
+    super.initState();
+    _pressController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 150),
+    );
+  }
+  
+  @override
+  void dispose() {
+    _pressController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _pressController,
+      builder: (context, child) {
+        final pressProgress = _pressController.value;
+        final pressOffset = pressProgress * 2.0;
+        
+        // Darken colors on press
+        final currentBaseColor = Color.lerp(
+          widget.backgroundColor,
+          widget.darkerColor,
+          pressProgress * 0.3,
+        )!;
+        final currentLightColor = Color.lerp(
+          widget.lighterColor,
+          widget.backgroundColor,
+          pressProgress * 0.4,
+        )!;
+        
+        // Reduce shadow on press (cave in effect)
+        final shadowOffset = 5 - (pressProgress * 3);
+        final shadowBlur = 8 - (pressProgress * 5);
+        final highlightOpacity = 0.4 - (pressProgress * 0.3);
+        
+        // Add extra drop shadows for plastic finish
+        final List<BoxShadow> shadows = [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.4 - pressProgress * 0.2),
+            offset: Offset(0, shadowOffset),
+            blurRadius: shadowBlur,
+            spreadRadius: -1,
+          ),
+        ];
+        
+        if (widget.backgroundFinish == 'plastic') {
+          // Add multiple drop shadows for plastic finish
+          shadows.addAll([
+            BoxShadow(
+              color: Colors.black.withOpacity(0.15 - pressProgress * 0.05),
+              offset: Offset(0, shadowOffset + 2),
+              blurRadius: shadowBlur + 4,
+              spreadRadius: 0,
+            ),
+            BoxShadow(
+              color: Colors.black.withOpacity(0.10 - pressProgress * 0.03),
+              offset: Offset(0, shadowOffset + 4),
+              blurRadius: shadowBlur + 8,
+              spreadRadius: 0,
+            ),
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              offset: Offset(2, shadowOffset + 1),
+              blurRadius: shadowBlur + 2,
+              spreadRadius: 0,
+            ),
+          ]);
+        }
+        
+        return GestureDetector(
+          onTapDown: (_) {
+            _pressController.forward();
+          },
+          onTapUp: (_) {
+            _pressController.reverse();
+            widget.onPressed();
+          },
+          onTapCancel: () {
+            _pressController.reverse();
+          },
+          child: Transform.translate(
+            offset: Offset(0, pressOffset),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    currentLightColor,
+                    currentBaseColor,
+                    widget.darkerColor,
+                  ],
+                  stops: const [0.0, 0.5, 1.0],
+                ),
+                boxShadow: shadows,
+              ),
+              child: Stack(
+                children: [
+                  // Glossy highlight overlay (oval-shaped on top-left)
+                  Positioned(
+                    top: -10,
+                    left: -10,
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: RadialGradient(
+                          colors: [
+                            Colors.white.withOpacity(highlightOpacity),
+                            Colors.white.withOpacity(0.0),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Button content
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(12),
+                      onTap: null,
+                      child: Container(
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          widget.label,
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          overflow: TextOverflow.visible,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: widget.textColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
 class SettingsScreen extends StatefulWidget {
   final AppSettings settings;
+  final VoidCallback? onSettingsChanged;
 
-  const SettingsScreen({super.key, required this.settings});
+  const SettingsScreen({super.key, required this.settings, this.onSettingsChanged});
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -1002,6 +1640,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   late bool _soundEffects;
   late String _highContrastMode;
   late bool _darkMode;
+  late String _backgroundFinish;
+  late String _language;
 
   @override
   void initState() {
@@ -1011,6 +1651,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _soundEffects = widget.settings.soundEffects;
     _highContrastMode = widget.settings.highContrastMode;
     _darkMode = widget.settings.darkMode;
+    _backgroundFinish = widget.settings.backgroundFinish;
+    _language = widget.settings.language;
   }
 
   Future<void> _saveSettings() async {
@@ -1019,21 +1661,91 @@ class _SettingsScreenState extends State<SettingsScreen> {
     widget.settings.soundEffects = _soundEffects;
     widget.settings.highContrastMode = _highContrastMode;
     widget.settings.darkMode = _darkMode;
+    widget.settings.backgroundFinish = _backgroundFinish;
+    widget.settings.language = _language;
     await widget.settings.saveSettings();
+    // Trigger rebuild of parent to apply language change
+    if (mounted) {
+      widget.onSettingsChanged?.call();
+      // Only pop if we're not already closing (language change handles its own pop)
+      if (Navigator.of(context).canPop()) {
+        Navigator.of(context).pop();
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final packageInfo = '1.0.0+1'; // From pubspec.yaml
+    
+    // Language names map
+    final languageNames = {
+      'en': 'English',
+      'es': 'Español',
+      'fr': 'Français',
+      'zh': '中文',
+      'ja': '日本語',
+      'fi': 'Suomi',
+      'af': 'Afrikaans',
+      'sw': 'Kiswahili',
+      'de': 'Deutsch',
+      'pt': 'Português',
+      'it': 'Italiano',
+      'ru': 'Русский',
+      'ar': 'العربية',
+      'hi': 'हिन्दी',
+      'ko': '한국어',
+    };
+    
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text(l10n.settings),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          // Language picker
+          ListTile(
+            title: Text(l10n.language),
+            subtitle: Text(languageNames[_language] ?? 'English'),
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text(l10n.language),
+                  content: SizedBox(
+                    width: double.maxFinite,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: languageNames.length,
+                      itemBuilder: (context, index) {
+                        final langCode = languageNames.keys.elementAt(index);
+                        final langName = languageNames[langCode]!;
+                        return RadioListTile<String>(
+                          title: Text(langName),
+                          value: langCode,
+                          groupValue: _language,
+                          onChanged: (value) {
+                            setState(() {
+                              _language = value!;
+                            });
+                            Navigator.of(context).pop(); // Close dialog first
+                            _saveSettings(); // Then save and close settings
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+          const Divider(),
           SwitchListTile(
-            title: const Text('Text-to-Speech'),
-            subtitle: const Text('Speak numbers and operations'),
+            title: Text(l10n.textToSpeech),
+            subtitle: Text(l10n.textToSpeechSubtitle),
             value: _textToSpeech,
             onChanged: (value) {
               setState(() {
@@ -1043,8 +1755,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             },
           ),
           SwitchListTile(
-            title: const Text('Dark Mode'),
-            subtitle: const Text('Warm dark theme'),
+            title: Text(l10n.darkMode),
+            subtitle: Text(l10n.darkModeSubtitle),
             value: _darkMode,
             onChanged: (value) {
               setState(() {
@@ -1058,8 +1770,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             },
           ),
           SwitchListTile(
-            title: const Text('High Contrast Mode'),
-            subtitle: const Text('Enhanced visibility for accessibility'),
+            title: Text(l10n.highContrastMode),
+            subtitle: Text(l10n.highContrastModeSubtitle),
             value: _highContrast,
             onChanged: (value) {
               setState(() {
@@ -1078,9 +1790,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('High Contrast Style'),
+                  Text(l10n.highContrastStyle),
                   RadioListTile<String>(
-                    title: const Text('Dark (Black background, Yellow text)'),
+                    title: Text(l10n.highContrastDark),
                     value: 'dark',
                     groupValue: _highContrastMode,
                     onChanged: (value) {
@@ -1091,7 +1803,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     },
                   ),
                   RadioListTile<String>(
-                    title: const Text('Light (White background, Black text)'),
+                    title: Text(l10n.highContrastLight),
                     value: 'light',
                     groupValue: _highContrastMode,
                     onChanged: (value) {
@@ -1105,8 +1817,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ),
           SwitchListTile(
-            title: const Text('Sound Effects'),
-            subtitle: const Text('Haptic feedback on button press'),
+            title: Text(l10n.soundEffects),
+            subtitle: Text(l10n.soundEffectsSubtitle),
             value: _soundEffects,
             onChanged: (value) {
               setState(() {
@@ -1116,8 +1828,45 @@ class _SettingsScreenState extends State<SettingsScreen> {
             },
           ),
           const SizedBox(height: 24),
+          const Divider(),
+          const SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Text(
+              l10n.backgroundFinish,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: SegmentedButton<String>(
+              segments: [
+                ButtonSegment(
+                  value: 'basic',
+                  label: Text(l10n.basic),
+                ),
+                ButtonSegment(
+                  value: 'matte',
+                  label: Text(l10n.matte),
+                ),
+                ButtonSegment(
+                  value: 'plastic',
+                  label: Text(l10n.plastic),
+                ),
+              ],
+              selected: {_backgroundFinish},
+              onSelectionChanged: (Set<String> newSelection) {
+                setState(() {
+                  _backgroundFinish = newSelection.first;
+                });
+                _saveSettings();
+              },
+            ),
+          ),
+          const SizedBox(height: 24),
+          const Divider(),
           ListTile(
-            title: const Text('Privacy Policy'),
+            title: Text(l10n.privacyPolicy),
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             onTap: () {
               Navigator.push(
@@ -1128,12 +1877,55 @@ class _SettingsScreenState extends State<SettingsScreen> {
               );
             },
           ),
+          const Divider(),
+          // Version
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  l10n.version,
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  packageInfo,
+                  style: const TextStyle(fontSize: 14),
+                ),
+              ],
+            ),
+          ),
+          // Changelog
+          ListTile(
+            title: Text(l10n.changelog),
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text(l10n.changelog),
+                  content: SingleChildScrollView(
+                    child: Text(
+                      l10n.changelogContent,
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text(MaterialLocalizations.of(context).okButtonLabel),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
           const SizedBox(height: 24),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Text(
               'Long-press the display to copy the result to clipboard.',
-              style: TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 14),
               textAlign: TextAlign.center,
             ),
           ),
@@ -1148,96 +1940,22 @@ class PrivacyPolicyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Privacy Policy'),
+        title: Text(l10n.privacyPolicyTitle),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
-        children: const [
+        children: [
           Text(
-            'Privacy Policy',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            l10n.privacyPolicyTitle,
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
-            'Last Updated: 2025',
-            style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic),
-          ),
-          SizedBox(height: 24),
-          Text(
-            'Introduction',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 8),
-          Text(
-            'Warm Light Calculator ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we handle information when you use our calculator application.',
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(height: 24),
-          Text(
-            'Information We Collect',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 8),
-          Text(
-            'Warm Light Calculator does not collect, store, or transmit any personal information. All calculations are performed locally on your device. We do not:\n\n'
-            '• Collect personal data\n'
-            '• Track your usage\n'
-            '• Store calculation history\n'
-            '• Share information with third parties\n'
-            '• Use analytics or tracking services',
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(height: 24),
-          Text(
-            'Local Storage',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 8),
-          Text(
-            'The app stores your preferences (such as text-to-speech settings, theme preferences, and accessibility options) locally on your device. This information never leaves your device and is not accessible to us or any third parties.',
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(height: 24),
-          Text(
-            'Third-Party Services',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 8),
-          Text(
-            'Warm Light Calculator does not integrate with any third-party services that collect or share your information.',
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(height: 24),
-          Text(
-            'Children\'s Privacy',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 8),
-          Text(
-            'Our app is safe for users of all ages. We do not knowingly collect information from children, and since we do not collect any information, children can use the app safely.',
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(height: 24),
-          Text(
-            'Changes to This Privacy Policy',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 8),
-          Text(
-            'We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date.',
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(height: 24),
-          Text(
-            'Contact Us',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 8),
-          Text(
-            'If you have any questions about this Privacy Policy, please contact us through the app store listing or our developer profile.',
-            style: TextStyle(fontSize: 16),
+            l10n.privacyPolicyContent,
+            style: const TextStyle(fontSize: 16),
           ),
         ],
       ),

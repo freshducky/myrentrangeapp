@@ -1,7 +1,7 @@
 name: warm_light_calculator
 description: A gentle, eye-friendly calculator app with warm colors and large, accessible text.
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.1.0+2
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -9,9 +9,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   cupertino_icons: ^1.0.2
   flutter_tts: ^4.0.2
   shared_preferences: ^2.2.2
+  audioplayers: ^6.0.0
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -20,7 +24,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
   
   assets:
     - assets/freshducky.jpg
     - assets/calculator.png
+    - assets/click_sound.mp3

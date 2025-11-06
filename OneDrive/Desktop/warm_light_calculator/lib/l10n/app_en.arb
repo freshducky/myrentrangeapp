@@ -1,0 +1,46 @@
+{
+  "@@locale": "en",
+  "appName": "Warm Light Calculator",
+  "@appName": {
+    "description": "The application name"
+  },
+  "settings": "Settings",
+  "textToSpeech": "Text-to-Speech",
+  "textToSpeechSubtitle": "Speak numbers and operations",
+  "darkMode": "Dark Mode",
+  "darkModeSubtitle": "Warm dark theme",
+  "highContrastMode": "High Contrast Mode",
+  "highContrastModeSubtitle": "Enhanced visibility for accessibility",
+  "highContrastStyle": "High Contrast Style",
+  "highContrastDark": "Dark (Black background, Yellow text)",
+  "highContrastLight": "Light (White background, Black text)",
+  "soundEffects": "Sound Effects",
+  "soundEffectsSubtitle": "Haptic feedback on button press",
+  "backgroundFinish": "Background Finish",
+  "basic": "Basic",
+  "matte": "Matte",
+  "plastic": "Plastic",
+  "privacyPolicy": "Privacy Policy",
+  "language": "Language",
+  "version": "Version",
+  "changelog": "Changelog",
+  "tip15": "TIP 15%",
+  "tip20": "TIP 20%",
+  "tip25": "TIP 25%",
+  "undo": "UNDO",
+  "enter": "ENTER",
+  "error": "Error",
+  "tipBreakdown": "Tip: {amount}",
+  "@tipBreakdown": {
+    "description": "Tip breakdown display",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "privacyPolicyTitle": "Privacy Policy",
+  "privacyPolicyContent": "Warm Light Calculator (\"we\", \"our\", or \"us\") is committed to protecting your privacy. This Privacy Policy explains how we handle information when you use our calculator application.\n\nInformation We Collect\n\nWarm Light Calculator does not collect, store, or transmit any personal information or data. The app operates entirely offline and does not connect to any external servers or services.\n\nLocal Storage\n\nThe app may store your preferences (such as theme settings, text-to-speech preferences, and accessibility options) locally on your device. This information never leaves your device and is not shared with us or any third parties.\n\nNo Tracking\n\nWe do not use any analytics, tracking tools, or advertising networks. Your usage of the app is completely private.\n\nChildren's Privacy\n\nOur app does not knowingly collect any information from children. Since we do not collect any data, this is not applicable.\n\nChanges to This Privacy Policy\n\nWe may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date.\n\nContact Us\n\nIf you have any questions about this Privacy Policy, please contact us through the app store listing or our developer profile.\n\nLast Updated: 2025",
+  "changelogContent": "Version 1.1.0\n\nNew Features:\n• Multi-language support (15 languages)\n• Glossy 3D button design with press animations\n• Customizable background finishes (Basic, Matte, Plastic)\n• Click sound effects on button press\n• Undo button for error correction\n• Improved tip calculator with breakdown display\n\nUI Improvements:\n• Redesigned button layout (UNDO and ENTER swapped)\n• Enhanced button styling with glossy 3D effect\n• Improved dark mode display color for better contrast\n• Removed header for cleaner interface\n• Settings button moved to top-right corner\n\nTechnical Improvements:\n• Limited significant figures for better display\n• Improved number formatting\n• Enhanced accessibility features\n• Better error handling\n\nBug Fixes:\n• Fixed decimal point button functionality\n• Improved tip calculation rounding to 2 decimal places\n• Fixed display text color in dark mode\n• Various UI refinements and optimizations"
+}
+
