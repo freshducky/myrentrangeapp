@@ -1677,7 +1677,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final packageInfo = '1.0.0+1'; // From pubspec.yaml
+    final packageInfo = '1.1.0+2'; // From pubspec.yaml
     
     // Language names map
     final languageNames = {
